@@ -7,12 +7,18 @@
         Added the constraints for entity Client.
     -->
     <changeSet id="20191126021410-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="document_type_id"
                                  baseTableName="client"
                                  constraintName="fk_client_document_type_id"
                                  referencedColumnNames="id"
                                  referencedTableName="document_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="client"
+                                 constraintName="fk_client_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="system_user"/>
 
     </changeSet>
 </databaseChangeLog>

@@ -3,6 +3,7 @@ package co.edu.sena.web.rest;
 import co.edu.sena.SkyfallApp;
 import co.edu.sena.domain.Client;
 import co.edu.sena.domain.DocumentType;
+import co.edu.sena.domain.User;
 import co.edu.sena.repository.ClientRepository;
 import co.edu.sena.service.ClientService;
 import co.edu.sena.service.dto.ClientDTO;
@@ -115,6 +116,11 @@ public class ClientResourceIT {
             documentType = TestUtil.findAll(em, DocumentType.class).get(0);
         }
         client.setDocumentType(documentType);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        client.setUser(user);
         return client;
     }
     /**
@@ -140,6 +146,11 @@ public class ClientResourceIT {
             documentType = TestUtil.findAll(em, DocumentType.class).get(0);
         }
         client.setDocumentType(documentType);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        client.setUser(user);
         return client;
     }
 

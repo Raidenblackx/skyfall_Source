@@ -10,6 +10,8 @@ import { IClient, Client } from 'app/shared/model/client.model';
 import { ClientService } from './client.service';
 import { IDocumentType } from 'app/shared/model/document-type.model';
 import { DocumentTypeService } from 'app/entities/document-type/document-type.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
   selector: 'jhi-client-update',
@@ -20,6 +22,8 @@ export class ClientUpdateComponent implements OnInit {
 
   documenttypes: IDocumentType[];
 
+  users: IUser[];
+
   editForm = this.fb.group({
     id: [],
     documentNumber: [null, [Validators.required]],
@@ -27,13 +31,15 @@ export class ClientUpdateComponent implements OnInit {
     secondName: [null, [Validators.maxLength(50)]],
     firstLastName: [null, [Validators.required, Validators.maxLength(50)]],
     secondLastName: [null, [Validators.maxLength(50)]],
-    documentTypeId: [null, Validators.required]
+    documentTypeId: [null, Validators.required],
+    userId: [null, Validators.required]
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected clientService: ClientService,
     protected documentTypeService: DocumentTypeService,
+    protected userService: UserService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -49,6 +55,9 @@ export class ClientUpdateComponent implements OnInit {
         (res: HttpResponse<IDocumentType[]>) => (this.documenttypes = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+    this.userService
+      .query()
+      .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(client: IClient) {
@@ -59,7 +68,8 @@ export class ClientUpdateComponent implements OnInit {
       secondName: client.secondName,
       firstLastName: client.firstLastName,
       secondLastName: client.secondLastName,
-      documentTypeId: client.documentTypeId
+      documentTypeId: client.documentTypeId,
+      userId: client.userId
     });
   }
 
@@ -86,7 +96,8 @@ export class ClientUpdateComponent implements OnInit {
       secondName: this.editForm.get(['secondName']).value,
       firstLastName: this.editForm.get(['firstLastName']).value,
       secondLastName: this.editForm.get(['secondLastName']).value,
-      documentTypeId: this.editForm.get(['documentTypeId']).value
+      documentTypeId: this.editForm.get(['documentTypeId']).value,
+      userId: this.editForm.get(['userId']).value
     };
   }
 
@@ -107,6 +118,10 @@ export class ClientUpdateComponent implements OnInit {
   }
 
   trackDocumentTypeById(index: number, item: IDocumentType) {
+    return item.id;
+  }
+
+  trackUserById(index: number, item: IUser) {
     return item.id;
   }
 }

@@ -18,7 +18,8 @@ public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
     @NotNull
@@ -50,6 +51,12 @@ public class Client implements Serializable {
     @NotNull
     @JsonIgnoreProperties("clients")
     private DocumentType documentType;
+
+    @OneToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("client")
+    @JoinColumn(unique = true)
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -162,6 +169,21 @@ public class Client implements Serializable {
     public void setDocumentType(DocumentType documentType) {
         this.documentType = documentType;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Client user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

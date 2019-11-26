@@ -18,15 +18,15 @@ spring:
     name: skyfall
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:skyfall;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:postgresql://database-1.c91qyq34xofy.us-east-1.rds.amazonaws.com:5432/prueba2
     name:
-    username:
-    password:
+    username: postgres
+    password: 123456789
     hikari:
       auto-commit: false
   jpa:
-    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
-    database: H2
+    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
+    database: POSTGRESQL
     open-in-view: false
     show-sql: false
     hibernate:

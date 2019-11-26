@@ -10,6 +10,8 @@ export interface IClient {
   instructors?: IInstructor[];
   documentTypeDocumentName?: string;
   documentTypeId?: number;
+  userLogin?: string;
+  userId?: number;
 }
 
 export class Client implements IClient {
@@ -22,6 +24,8 @@ export class Client implements IClient {
     public secondLastName?: string,
     public instructors?: IInstructor[],
     public documentTypeDocumentName?: string,
-    public documentTypeId?: number
+    public documentTypeId?: number,
+    public userLogin?: string,
+    public userId?: number
   ) {}
 }

@@ -31,6 +31,10 @@
                         <a [routerLink]="['/document-type', client.documentTypeId, 'view']">{{client.documentTypeDocumentName}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="skyfallApp.client.user">User</span></dt>
+                <dd>
+                    {{client.userLogin}}
+                </dd>
             </dl>
 
             <button type="submit"

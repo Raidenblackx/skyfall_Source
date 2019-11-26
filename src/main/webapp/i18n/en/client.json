@@ -22,7 +22,8 @@
       "firstLastName": "First Last Name",
       "secondLastName": "Second Last Name",
       "instructor": "Instructor",
-      "documentType": "Document Type"
+      "documentType": "Document Type",
+      "user": "User"
     }
   }
 }

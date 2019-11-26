@@ -25,6 +25,7 @@
             <th scope="col"  jhiSortBy="firstLastName"><span jhiTranslate="skyfallApp.client.firstLastName">First Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="secondLastName"><span jhiTranslate="skyfallApp.client.secondLastName">Second Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="documentTypeDocumentName"><span jhiTranslate="skyfallApp.client.documentType">Document Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userLogin"><span jhiTranslate="skyfallApp.client.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -40,6 +41,9 @@
                     <div *ngIf="client.documentTypeId">
                         <a [routerLink]="['/document-type', client.documentTypeId , 'view' ]" >{{client.documentTypeDocumentName}}</a>
                     </div>
+                </td>
+                <td>
+                    {{client.userLogin}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
