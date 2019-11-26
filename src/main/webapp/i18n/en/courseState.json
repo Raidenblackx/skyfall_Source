@@ -1,0 +1,24 @@
+{
+  "skyfallApp": {
+    "courseState": {
+      "home": {
+        "title": "Course States",
+        "createLabel": "Create a new Course State",
+        "createOrEditLabel": "Create or edit a Course State",
+        "notFound": "No Course States found"
+      },
+      "created": "A new Course State is created with identifier {{ param }}",
+      "updated": "A Course State is updated with identifier {{ param }}",
+      "deleted": "A Course State is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Course State {{ id }}?"
+      },
+      "detail": {
+        "title": "Course State"
+      },
+      "nameCourseState": "Name Course State",
+      "stateCourseState": "State Course State",
+      "course": "Course"
+    }
+  }
+}

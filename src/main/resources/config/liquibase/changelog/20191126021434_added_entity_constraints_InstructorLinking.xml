@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity InstructorLinking.
+    -->
+    <changeSet id="20191126021434-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="year_id"
+                                 baseTableName="instructor_linking"
+                                 constraintName="fk_instructor_linking_year_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="year"/>
+
+        <addForeignKeyConstraint baseColumnNames="instructor_id"
+                                 baseTableName="instructor_linking"
+                                 constraintName="fk_instructor_linking_instructor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="instructor"/>
+
+        <addForeignKeyConstraint baseColumnNames="linkage_id"
+                                 baseTableName="instructor_linking"
+                                 constraintName="fk_instructor_linking_linkage_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="linkage"/>
+
+    </changeSet>
+</databaseChangeLog>

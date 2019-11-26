@@ -1,0 +1,78 @@
+{
+    "name": "Course",
+    "fields": [
+        {
+            "fieldName": "courseNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "route",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "courseHasTrimester",
+            "otherEntityRelationshipName": "course",
+            "relationshipName": "courseHasTrimester"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "courseState",
+            "otherEntityRelationshipName": "course",
+            "relationshipValidateRules": "required",
+            "relationshipName": "courseState",
+            "otherEntityField": "nameCourseState"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "workingDay",
+            "otherEntityRelationshipName": "course",
+            "relationshipName": "workingDay",
+            "otherEntityField": "nameWorkingDay"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "program",
+            "otherEntityRelationshipName": "course",
+            "relationshipValidateRules": "required",
+            "relationshipName": "program",
+            "otherEntityField": "nameProgram"
+        }
+    ],
+    "changelogDate": "20191126021419",
+    "entityTableName": "course",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

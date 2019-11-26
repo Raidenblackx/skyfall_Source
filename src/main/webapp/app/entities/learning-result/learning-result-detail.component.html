@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="learningResult">
+            <h2><span jhiTranslate="skyfallApp.learningResult.detail.title">Learning Result</span> {{learningResult.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.learningResult.codeResult">Code Result</span></dt>
+                <dd>
+                    <span>{{learningResult.codeResult}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.learningResult.denomination">Denomination</span></dt>
+                <dd>
+                    <span>{{learningResult.denomination}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.learningResult.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="learningResult.competitionId">
+                        <a [routerLink]="['/competition', learningResult.competitionId, 'view']">{{learningResult.competitionCodeCompetition}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/learning-result', learningResult.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

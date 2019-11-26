@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "planning": {
+      "home": {
+        "title": "Plannings",
+        "createLabel": "Crear nuevo Planning",
+        "createOrEditLabel": "Crear o editar Planning",
+        "notFound": "Ningún Plannings encontrado"
+      },
+      "created": "Un nuevo Planning ha sido creado con el identificador {{ param }}",
+      "updated": "Un Planning ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Planning ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Planning {{ id }}?"
+      },
+      "detail": {
+        "title": "Planning"
+      },
+      "code": "Code",
+      "date": "Date",
+      "statePlannig": "State Plannig",
+      "trimesterPlanning": "Trimester Planning"
+    }
+  }
+}

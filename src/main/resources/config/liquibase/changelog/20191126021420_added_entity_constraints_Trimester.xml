@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Trimester.
+    -->
+    <changeSet id="20191126021420-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="working_day_id"
+                                 baseTableName="trimester"
+                                 constraintName="fk_trimester_working_day_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="working_day"/>
+
+        <addForeignKeyConstraint baseColumnNames="level_formation_id"
+                                 baseTableName="trimester"
+                                 constraintName="fk_trimester_level_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="level_formation"/>
+
+    </changeSet>
+</databaseChangeLog>

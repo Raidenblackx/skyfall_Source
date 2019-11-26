@@ -1,0 +1,48 @@
+{
+    "name": "ScheduleVersion",
+    "fields": [
+        {
+            "fieldName": "numberVersion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "stateScheduleVersion",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "schedule",
+            "otherEntityRelationshipName": "scheduleVersion",
+            "relationshipName": "schedule"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "currentQuarter",
+            "otherEntityRelationshipName": "scheduleVersion",
+            "relationshipValidateRules": "required",
+            "relationshipName": "currentQuarter",
+            "otherEntityField": "scheduledQuarter"
+        }
+    ],
+    "changelogDate": "20191126021440",
+    "entityTableName": "schedule_version",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

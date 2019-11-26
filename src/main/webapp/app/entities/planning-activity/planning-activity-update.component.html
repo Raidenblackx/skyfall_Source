@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-planning-activity-heading" jhiTranslate="skyfallApp.planningActivity.home.createOrEditLabel">Create or edit a Planning Activity</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.planningActivity.trimesterPlanning" for="field_trimesterPlanning">Trimester Planning</label>
+                    <select class="form-control" id="field_trimesterPlanning" name="trimesterPlanning" formControlName="trimesterPlanningId">
+                        <option *ngIf="!editForm.get('trimesterPlanningId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="trimesterPlanningOption.id" *ngFor="let trimesterPlanningOption of trimesterplannings; trackBy: trackTrimesterPlanningById">{{trimesterPlanningOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('trimesterPlanningId').invalid && (editForm.get('trimesterPlanningId').dirty || editForm.get('trimesterPlanningId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('trimesterPlanningId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.planningActivity.proyectActivity" for="field_proyectActivity">Proyect Activity</label>
+                    <select class="form-control" id="field_proyectActivity" name="proyectActivity" formControlName="proyectActivityId">
+                        <option *ngIf="!editForm.get('proyectActivityId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="proyectActivityOption.id" *ngFor="let proyectActivityOption of proyectactivities; trackBy: trackProyectActivityById">{{proyectActivityOption.numberProyectActivity}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('proyectActivityId').invalid && (editForm.get('proyectActivityId').dirty || editForm.get('proyectActivityId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('proyectActivityId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

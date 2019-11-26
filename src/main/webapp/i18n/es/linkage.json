@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "linkage": {
+      "home": {
+        "title": "Linkages",
+        "createLabel": "Crear nuevo Linkage",
+        "createOrEditLabel": "Crear o editar Linkage",
+        "notFound": "Ningún Linkages encontrado"
+      },
+      "created": "Un nuevo Linkage ha sido creado con el identificador {{ param }}",
+      "updated": "Un Linkage ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Linkage ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Linkage {{ id }}?"
+      },
+      "detail": {
+        "title": "Linkage"
+      },
+      "typeLink": "Type Link",
+      "hours": "Hours",
+      "stateLink": "State Link",
+      "instructorLinking": "Instructor Linking"
+    }
+  }
+}

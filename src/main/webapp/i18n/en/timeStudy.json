@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "timeStudy": {
+      "home": {
+        "title": "Time Studies",
+        "createLabel": "Create a new Time Study",
+        "createOrEditLabel": "Create or edit a Time Study",
+        "notFound": "No Time Studies found"
+      },
+      "created": "A new Time Study is created with identifier {{ param }}",
+      "updated": "A Time Study is updated with identifier {{ param }}",
+      "deleted": "A Time Study is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Time Study {{ id }}?"
+      },
+      "detail": {
+        "title": "Time Study"
+      },
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "journeyInstructor": "Journey Instructor",
+      "day": "Day"
+    }
+  }
+}

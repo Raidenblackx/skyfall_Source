@@ -1,0 +1,119 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-course-heading" jhiTranslate="skyfallApp.course.home.createOrEditLabel">Create or edit a Course</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.course.courseNumber" for="field_courseNumber">Course Number</label>
+                    <input type="text" class="form-control" name="courseNumber" id="field_courseNumber"
+                           formControlName="courseNumber"/>
+                    <div *ngIf="editForm.get('courseNumber').invalid && (editForm.get('courseNumber').dirty || editForm.get('courseNumber').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('courseNumber').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('courseNumber').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.course.startDate" for="field_startDate">Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_startDate" type="datetime-local" class="form-control" name="startDate" formControlName="startDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('startDate').invalid && (editForm.get('startDate').dirty || editForm.get('startDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('startDate').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('startDate').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.course.endDate" for="field_endDate">End Date</label>
+                    <div class="d-flex">
+                        <input id="field_endDate" type="datetime-local" class="form-control" name="endDate" formControlName="endDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('endDate').invalid && (editForm.get('endDate').dirty || editForm.get('endDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('endDate').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('endDate').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.course.route" for="field_route">Route</label>
+                    <input type="text" class="form-control" name="route" id="field_route"
+                           formControlName="route"/>
+                    <div *ngIf="editForm.get('route').invalid && (editForm.get('route').dirty || editForm.get('route').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('route').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('route').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.course.courseState" for="field_courseState">Course State</label>
+                    <select class="form-control" id="field_courseState" name="courseState" formControlName="courseStateId">
+                        <option *ngIf="!editForm.get('courseStateId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="courseStateOption.id" *ngFor="let courseStateOption of coursestates; trackBy: trackCourseStateById">{{courseStateOption.nameCourseState}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('courseStateId').invalid && (editForm.get('courseStateId').dirty || editForm.get('courseStateId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('courseStateId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.course.workingDay" for="field_workingDay">Working Day</label>
+                    <select class="form-control" id="field_workingDay" name="workingDay" formControlName="workingDayId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workingDayOption.id" *ngFor="let workingDayOption of workingdays; trackBy: trackWorkingDayById">{{workingDayOption.nameWorkingDay}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.course.program" for="field_program">Program</label>
+                    <select class="form-control" id="field_program" name="program" formControlName="programId">
+                        <option *ngIf="!editForm.get('programId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="programOption.id" *ngFor="let programOption of programs; trackBy: trackProgramById">{{programOption.nameProgram}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('programId').invalid && (editForm.get('programId').dirty || editForm.get('programId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('programId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

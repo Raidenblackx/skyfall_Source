@@ -14,6 +14,67 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021409_added_entity_DocumentType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021410_added_entity_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021411_added_entity_CourseState.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021412_added_entity_WorkingDay.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021413_added_entity_LevelFormation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021414_added_entity_Program.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021415_added_entity_Competition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021416_added_entity_AvailabilityCompetition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021417_added_entity_LearningResult.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021418_added_entity_ResultSeen.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021419_added_entity_Course.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021420_added_entity_Trimester.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021421_added_entity_CourseHasTrimester.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021422_added_entity_Planning.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021423_added_entity_TrimesterPlanning.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021424_added_entity_PlanningActivity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021425_added_entity_TypeEnvironment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021426_added_entity_Sede.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021427_added_entity_Ambient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021428_added_entity_LimitationEnvironment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021429_added_entity_Year.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021430_added_entity_Area.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021431_added_entity_Instructor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021432_added_entity_Linkage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021433_added_entity_InstructorArea.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021434_added_entity_InstructorLinking.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021435_added_entity_JourneyInstructor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021436_added_entity_ScheduleAvailability.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021437_added_entity_Day.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021438_added_entity_TimeStudy.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021439_added_entity_CurrentQuarter.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021440_added_entity_ScheduleVersion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021441_added_entity_Modality.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021442_added_entity_Proyect.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021443_added_entity_Phase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021444_added_entity_ProyectActivity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021445_added_entity_Schedule.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20191126021410_added_entity_constraints_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021414_added_entity_constraints_Program.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021415_added_entity_constraints_Competition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021416_added_entity_constraints_AvailabilityCompetition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021417_added_entity_constraints_LearningResult.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021418_added_entity_constraints_ResultSeen.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021419_added_entity_constraints_Course.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021420_added_entity_constraints_Trimester.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021421_added_entity_constraints_CourseHasTrimester.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021423_added_entity_constraints_TrimesterPlanning.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021424_added_entity_constraints_PlanningActivity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021427_added_entity_constraints_Ambient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021428_added_entity_constraints_LimitationEnvironment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021431_added_entity_constraints_Instructor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021433_added_entity_constraints_InstructorArea.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021434_added_entity_constraints_InstructorLinking.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021436_added_entity_constraints_ScheduleAvailability.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021438_added_entity_constraints_TimeStudy.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021439_added_entity_constraints_CurrentQuarter.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021440_added_entity_constraints_ScheduleVersion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021442_added_entity_constraints_Proyect.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021443_added_entity_constraints_Phase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021444_added_entity_constraints_ProyectActivity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191126021445_added_entity_constraints_Schedule.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

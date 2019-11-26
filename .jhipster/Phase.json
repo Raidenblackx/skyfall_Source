@@ -1,0 +1,48 @@
+{
+    "name": "Phase",
+    "fields": [
+        {
+            "fieldName": "namePhase",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "statePhase",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "proyectActivity",
+            "otherEntityRelationshipName": "phase",
+            "relationshipName": "proyectActivity"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "proyect",
+            "otherEntityRelationshipName": "phase",
+            "relationshipValidateRules": "required",
+            "relationshipName": "proyect",
+            "otherEntityField": "codeProyect"
+        }
+    ],
+    "changelogDate": "20191126021443",
+    "entityTableName": "phase",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

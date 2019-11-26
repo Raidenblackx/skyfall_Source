@@ -1,0 +1,134 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-schedule-heading" jhiTranslate="skyfallApp.schedule.home.createOrEditLabel">Create or edit a Schedule</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.startTime" for="field_startTime">Start Time</label>
+                    <div class="d-flex">
+                        <input id="field_startTime" type="datetime-local" class="form-control" name="startTime" formControlName="startTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('startTime').invalid && (editForm.get('startTime').dirty || editForm.get('startTime').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('startTime').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('startTime').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.endTime" for="field_endTime">End Time</label>
+                    <div class="d-flex">
+                        <input id="field_endTime" type="datetime-local" class="form-control" name="endTime" formControlName="endTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('endTime').invalid && (editForm.get('endTime').dirty || editForm.get('endTime').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('endTime').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('endTime').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.courseHasTrimester" for="field_courseHasTrimester">Course Has Trimester</label>
+                    <select class="form-control" id="field_courseHasTrimester" name="courseHasTrimester" formControlName="courseHasTrimesterId">
+                        <option *ngIf="!editForm.get('courseHasTrimesterId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="courseHasTrimesterOption.id" *ngFor="let courseHasTrimesterOption of coursehastrimesters; trackBy: trackCourseHasTrimesterById">{{courseHasTrimesterOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('courseHasTrimesterId').invalid && (editForm.get('courseHasTrimesterId').dirty || editForm.get('courseHasTrimesterId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('courseHasTrimesterId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.ambient" for="field_ambient">Ambient</label>
+                    <select class="form-control" id="field_ambient" name="ambient" formControlName="ambientId">
+                        <option *ngIf="!editForm.get('ambientId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="ambientOption.id" *ngFor="let ambientOption of ambients; trackBy: trackAmbientById">{{ambientOption.numberRoom}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('ambientId').invalid && (editForm.get('ambientId').dirty || editForm.get('ambientId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('ambientId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.instructor" for="field_instructor">Instructor</label>
+                    <select class="form-control" id="field_instructor" name="instructor" formControlName="instructorId">
+                        <option *ngIf="!editForm.get('instructorId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="instructorOption.id" *ngFor="let instructorOption of instructors; trackBy: trackInstructorById">{{instructorOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('instructorId').invalid && (editForm.get('instructorId').dirty || editForm.get('instructorId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('instructorId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.day" for="field_day">Day</label>
+                    <select class="form-control" id="field_day" name="day" formControlName="dayId">
+                        <option *ngIf="!editForm.get('dayId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="dayOption.id" *ngFor="let dayOption of days; trackBy: trackDayById">{{dayOption.nameDay}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('dayId').invalid && (editForm.get('dayId').dirty || editForm.get('dayId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('dayId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.scheduleVersion" for="field_scheduleVersion">Schedule Version</label>
+                    <select class="form-control" id="field_scheduleVersion" name="scheduleVersion" formControlName="scheduleVersionId">
+                        <option *ngIf="!editForm.get('scheduleVersionId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="scheduleVersionOption.id" *ngFor="let scheduleVersionOption of scheduleversions; trackBy: trackScheduleVersionById">{{scheduleVersionOption.numberVersion}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('scheduleVersionId').invalid && (editForm.get('scheduleVersionId').dirty || editForm.get('scheduleVersionId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('scheduleVersionId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.schedule.modality" for="field_modality">Modality</label>
+                    <select class="form-control" id="field_modality" name="modality" formControlName="modalityId">
+                        <option *ngIf="!editForm.get('modalityId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="modalityOption.id" *ngFor="let modalityOption of modalities; trackBy: trackModalityById">{{modalityOption.nameModality}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('modalityId').invalid && (editForm.get('modalityId').dirty || editForm.get('modalityId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('modalityId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "skyfallApp": {
+    "journeyInstructor": {
+      "home": {
+        "title": "Journey Instructors",
+        "createLabel": "Crear nuevo Journey Instructor",
+        "createOrEditLabel": "Crear o editar Journey Instructor",
+        "notFound": "Ningún Journey Instructors encontrado"
+      },
+      "created": "Un nuevo Journey Instructor ha sido creado con el identificador {{ param }}",
+      "updated": "Un Journey Instructor ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Journey Instructor ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Journey Instructor {{ id }}?"
+      },
+      "detail": {
+        "title": "Journey Instructor"
+      },
+      "nameDay": "Name Day",
+      "description": "Description",
+      "stateJourneyInstructor": "State Journey Instructor",
+      "timeStudy": "Time Study",
+      "scheduleAvailability": "Schedule Availability"
+    }
+  }
+}

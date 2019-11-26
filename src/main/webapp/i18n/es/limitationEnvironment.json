@@ -1,0 +1,23 @@
+{
+  "skyfallApp": {
+    "limitationEnvironment": {
+      "home": {
+        "title": "Limitation Environments",
+        "createLabel": "Crear nuevo Limitation Environment",
+        "createOrEditLabel": "Crear o editar Limitation Environment",
+        "notFound": "Ningún Limitation Environments encontrado"
+      },
+      "created": "Un nuevo Limitation Environment ha sido creado con el identificador {{ param }}",
+      "updated": "Un Limitation Environment ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Limitation Environment ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Limitation Environment {{ id }}?"
+      },
+      "detail": {
+        "title": "Limitation Environment"
+      },
+      "learningResult": "Learning Result",
+      "ambient": "Ambient"
+    }
+  }
+}

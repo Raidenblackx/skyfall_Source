@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="client">
+            <h2><span jhiTranslate="skyfallApp.client.detail.title">Client</span> {{client.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.client.documentNumber">Document Number</span></dt>
+                <dd>
+                    <span>{{client.documentNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.client.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{client.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.client.secondName">Second Name</span></dt>
+                <dd>
+                    <span>{{client.secondName}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.client.firstLastName">First Last Name</span></dt>
+                <dd>
+                    <span>{{client.firstLastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.client.secondLastName">Second Last Name</span></dt>
+                <dd>
+                    <span>{{client.secondLastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.client.documentType">Document Type</span></dt>
+                <dd>
+                    <div *ngIf="client.documentTypeId">
+                        <a [routerLink]="['/document-type', client.documentTypeId, 'view']">{{client.documentTypeDocumentName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/client', client.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

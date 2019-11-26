@@ -1,0 +1,55 @@
+{
+    "name": "ProyectActivity",
+    "fields": [
+        {
+            "fieldName": "numberProyectActivity",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descriptionActivity",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 400
+        },
+        {
+            "fieldName": "stateProyectActivity",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "planningActivity",
+            "otherEntityRelationshipName": "proyectActivity",
+            "relationshipName": "planningActivity"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "phase",
+            "otherEntityRelationshipName": "proyectActivity",
+            "relationshipValidateRules": "required",
+            "relationshipName": "phase",
+            "otherEntityField": "namePhase"
+        }
+    ],
+    "changelogDate": "20191126021444",
+    "entityTableName": "proyect_activity",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

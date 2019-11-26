@@ -1,0 +1,32 @@
+{
+    "name": "ResultSeen",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "learningResult",
+            "otherEntityRelationshipName": "resultSeen",
+            "relationshipValidateRules": "required",
+            "relationshipName": "learningResult",
+            "otherEntityField": "codeResult"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "courseHasTrimester",
+            "otherEntityRelationshipName": "resultSeen",
+            "relationshipValidateRules": "required",
+            "relationshipName": "courseHasTrimester",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191126021418",
+    "entityTableName": "result_seen",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

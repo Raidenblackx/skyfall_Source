@@ -1,0 +1,72 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="skyfallApp.area.home.title">Areas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-area" [routerLink]="['/area/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="skyfallApp.area.home.createLabel">
+            Create a new Area
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="areas?.length === 0">
+        <span jhiTranslate="skyfallApp.area.home.notFound">No areas found</span>
+    </div>
+    <div class="table-responsive" *ngIf="areas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nameArea"><span jhiTranslate="skyfallApp.area.nameArea">Name Area</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="urlLogo"><span jhiTranslate="skyfallApp.area.urlLogo">Url Logo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="stateArea"><span jhiTranslate="skyfallApp.area.stateArea">State Area</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let area of areas ;trackBy: trackId">
+                <td><a [routerLink]="['/area', area.id, 'view' ]">{{area.id}}</a></td>
+                <td>{{area.nameArea}}</td>
+                <td>
+                    <a *ngIf="area.urlLogo" (click)="openFile(area.urlLogoContentType, area.urlLogo)">
+                        <img [src]="'data:' + area.urlLogoContentType + ';base64,' + area.urlLogo" style="max-height: 30px;" alt="area image"/>
+                    </a>
+                    <span *ngIf="area.urlLogo">{{area.urlLogoContentType}}, {{byteSize(area.urlLogo)}}</span>
+                </td>
+                <td jhiTranslate="{{'skyfallApp.State.' + area.stateArea}}">{{area.stateArea}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/area', area.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/area', area.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(area)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="areas?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

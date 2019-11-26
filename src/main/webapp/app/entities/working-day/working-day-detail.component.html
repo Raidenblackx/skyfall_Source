@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workingDay">
+            <h2><span jhiTranslate="skyfallApp.workingDay.detail.title">Working Day</span> {{workingDay.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.workingDay.initialWorkingDay">Initial Working Day</span></dt>
+                <dd>
+                    <span>{{workingDay.initialWorkingDay}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.workingDay.nameWorkingDay">Name Working Day</span></dt>
+                <dd>
+                    <span>{{workingDay.nameWorkingDay}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.workingDay.description">Description</span></dt>
+                <dd>
+                    <span>{{workingDay.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.workingDay.imagenUrl">Imagen Url</span></dt>
+                <dd>
+                    <div *ngIf="workingDay.imagenUrl">
+                        <a (click)="openFile(workingDay.imagenUrlContentType, workingDay.imagenUrl)">
+                            <img [src]="'data:' + workingDay.imagenUrlContentType + ';base64,' + workingDay.imagenUrl" style="max-width: 100%;" alt="workingDay image"/>
+                        </a>
+                        {{workingDay.imagenUrlContentType}}, {{byteSize(workingDay.imagenUrl)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.workingDay.stateWorkingDay">State Working Day</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + workingDay.stateWorkingDay}}">{{workingDay.stateWorkingDay}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/working-day', workingDay.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

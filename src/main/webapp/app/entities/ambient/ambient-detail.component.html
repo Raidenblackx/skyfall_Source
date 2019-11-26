@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ambient">
+            <h2><span jhiTranslate="skyfallApp.ambient.detail.title">Ambient</span> {{ambient.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.ambient.numberRoom">Number Room</span></dt>
+                <dd>
+                    <span>{{ambient.numberRoom}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.ambient.description">Description</span></dt>
+                <dd>
+                    <span>{{ambient.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.ambient.limitation">Limitation</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.Limitation.' + ambient.limitation}}">{{ambient.limitation}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.ambient.stateAmbient">State Ambient</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + ambient.stateAmbient}}">{{ambient.stateAmbient}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.ambient.typeEnvironment">Type Environment</span></dt>
+                <dd>
+                    <div *ngIf="ambient.typeEnvironmentId">
+                        <a [routerLink]="['/type-environment', ambient.typeEnvironmentId, 'view']">{{ambient.typeEnvironmentType}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.ambient.sede">Sede</span></dt>
+                <dd>
+                    <div *ngIf="ambient.sedeId">
+                        <a [routerLink]="['/sede', ambient.sedeId, 'view']">{{ambient.sedeNameSede}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ambient', ambient.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

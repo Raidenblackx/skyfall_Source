@@ -1,0 +1,23 @@
+{
+  "skyfallApp": {
+    "resultSeen": {
+      "home": {
+        "title": "Result Seens",
+        "createLabel": "Crear nuevo Result Seen",
+        "createOrEditLabel": "Crear o editar Result Seen",
+        "notFound": "Ningún Result Seens encontrado"
+      },
+      "created": "Un nuevo Result Seen ha sido creado con el identificador {{ param }}",
+      "updated": "Un Result Seen ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Result Seen ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Result Seen {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Seen"
+      },
+      "learningResult": "Learning Result",
+      "courseHasTrimester": "Course Has Trimester"
+    }
+  }
+}

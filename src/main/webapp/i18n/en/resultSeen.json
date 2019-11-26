@@ -1,0 +1,23 @@
+{
+  "skyfallApp": {
+    "resultSeen": {
+      "home": {
+        "title": "Result Seens",
+        "createLabel": "Create a new Result Seen",
+        "createOrEditLabel": "Create or edit a Result Seen",
+        "notFound": "No Result Seens found"
+      },
+      "created": "A new Result Seen is created with identifier {{ param }}",
+      "updated": "A Result Seen is updated with identifier {{ param }}",
+      "deleted": "A Result Seen is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Result Seen {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Seen"
+      },
+      "learningResult": "Learning Result",
+      "courseHasTrimester": "Course Has Trimester"
+    }
+  }
+}

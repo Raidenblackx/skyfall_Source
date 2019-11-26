@@ -1,0 +1,23 @@
+{
+  "skyfallApp": {
+    "availabilityCompetition": {
+      "home": {
+        "title": "Availability Competitions",
+        "createLabel": "Create a new Availability Competition",
+        "createOrEditLabel": "Create or edit a Availability Competition",
+        "notFound": "No Availability Competitions found"
+      },
+      "created": "A new Availability Competition is created with identifier {{ param }}",
+      "updated": "A Availability Competition is updated with identifier {{ param }}",
+      "deleted": "A Availability Competition is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Availability Competition {{ id }}?"
+      },
+      "detail": {
+        "title": "Availability Competition"
+      },
+      "competition": "Competition",
+      "instructorLinking": "Instructor Linking"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="competition">
+            <h2><span jhiTranslate="skyfallApp.competition.detail.title">Competition</span> {{competition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.competition.codeCompetition">Code Competition</span></dt>
+                <dd>
+                    <span>{{competition.codeCompetition}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.competition.denomination">Denomination</span></dt>
+                <dd>
+                    <span>{{competition.denomination}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.competition.program">Program</span></dt>
+                <dd>
+                    <div *ngIf="competition.programId">
+                        <a [routerLink]="['/program', competition.programId, 'view']">{{competition.programNameProgram}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/competition', competition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

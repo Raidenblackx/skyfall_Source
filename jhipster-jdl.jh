@@ -1,0 +1,356 @@
+enum State{
+  ACTIVO,
+  INACTIVO
+}
+
+enum Limitation{
+	SIN_LIMITACION, CON_LIMITACION
+}
+
+enum StateProgram{
+  EJECUCION, 
+  SUSPENDIDO
+}
+
+
+entity DocumentType{
+initial String required maxlength(10),
+documentName String required maxlength(100),
+stateDocumentType State required
+}
+
+entity Client {
+	documentNumber Integer required,
+    firstName String required maxlength(50),
+    secondName String maxlength(50),
+    firstLastName String required maxlength(50),
+    secondLastName String maxlength(50),
+}
+
+entity CourseState{
+	nameCourseState String required maxlength(20),
+    stateCourseState State required 
+}
+
+entity WorkingDay{
+	initialWorkingDay String required maxlength(20),
+    nameWorkingDay String required maxlength(40),
+    description String required maxlength(100),
+    imagenUrl ImageBlob	,
+    stateWorkingDay State required
+}
+
+entity LevelFormation{
+	level String required maxlength(40),
+    stateLevelFormation State required
+}
+
+entity Program{
+	codeProgram String maxlength(50) required,
+    version String required maxlength(40),
+    nameProgram String required maxlength(500),
+    initial String required maxlength(40),
+    stateProgram  StateProgram required
+}
+
+entity Competition{
+	codeCompetition String required maxlength(50),
+    denomination String required maxlength(1000)
+}
+
+entity AvailabilityCompetition {
+
+}
+
+entity LearningResult{
+	codeResult String required maxlength(40),
+    denomination String required maxlength(1000)
+}
+
+entity ResultSeen{
+
+}
+
+entity Course{
+	courseNumber String required maxlength(40),
+    startDate ZonedDateTime required,
+    endDate ZonedDateTime required,
+    route String required maxlength(40) 
+}
+
+entity Trimester{
+	nameTrimester Integer required,
+    stateTrimester State required
+}
+
+entity CourseHasTrimester{
+
+}
+
+entity Planning {
+	code String required maxlength(40),
+    date ZonedDateTime required,
+    statePlannig State required
+    }
+
+entity TrimesterPlanning {
+}
+
+entity PlanningActivity {
+}
+
+entity TypeEnvironment {
+	type String required maxlength(50),
+    description String required maxlength(100),
+    stateTypeEnvironment State required 
+}
+
+entity Sede{
+	nameSede String required maxlength(50),
+    description String required maxlength(400),
+    stateSede State required 
+}
+
+entity Ambient {
+	numberRoom String required maxlength(50),
+    description String required maxlength(1000),
+    limitation Limitation required,
+    stateAmbient State required
+}
+
+entity LimitationEnvironment {
+}
+
+entity Year {
+	numberYear Integer required,
+    stateYear State required
+}
+
+entity Area {
+	nameArea String required maxlength(40),
+    urlLogo ImageBlob required ,
+    stateArea State required
+}
+
+entity Instructor {
+	stateInstructor State required 
+}
+
+entity Linkage {
+	typeLink String required maxlength(40),
+    hours Integer required,
+    stateLink State required
+}
+
+entity InstructorArea {
+ 	stateInstructorArea State required
+}
+
+entity InstructorLinking {
+ 	startDate ZonedDateTime required,
+    endDate ZonedDateTime required
+}
+
+entity JourneyInstructor {
+	nameDay String maxlength(40) required,
+    description String maxlength(200) required,
+    stateJourneyInstructor State required
+}
+
+entity ScheduleAvailability {
+
+}
+
+entity Day {
+	nameDay String required maxlength(40),
+    stateDay State required
+}
+
+entity TimeStudy {
+ 	startTime Integer required,
+    endTime Integer required
+}
+
+entity CurrentQuarter {
+	scheduledQuarter Integer required,
+    startDate ZonedDateTime required,
+    endDate ZonedDateTime required,
+    stateCurrentQuarter State required
+}
+
+entity ScheduleVersion{
+	numberVersion String maxlength(40) required,
+    stateScheduleVersion State required
+}
+
+entity Modality {
+	nameModality String required maxlength(40),
+   	color String required maxlength(50),
+    stateModality State required
+}
+
+entity Proyect {
+	codeProyect String required maxlength(40),
+    nameProyect String required maxlength(500),
+    stateProyect State required
+}
+
+entity Phase {
+	namePhase String required maxlength(40),
+    statePhase State required
+}
+
+entity ProyectActivity {
+	numberProyectActivity Integer required,
+    descriptionActivity String required maxlength(400),
+    stateProyectActivity State required
+}
+
+entity PlanningActivity {
+ }
+ 
+entity Schedule {
+ 	startTime ZonedDateTime required,
+    endTime ZonedDateTime required
+}
+ //relaciones
+ 
+ relationship OneToMany {
+	DocumentType{client} to Client{documentType(documentName) required},
+    }
+    
+ relationship OneToMany {
+	Client{instructor} to Instructor{client(documentNumber) required},
+    } 
+    
+ relationship OneToMany {
+	CourseState{course} to Course{courseState(nameCourseState) required},
+    } 
+    
+ relationship OneToMany {
+	WorkingDay{course} to Course{workingDay(nameWorkingDay)},
+    WorkingDay{trimester} to Trimester{workingDay(nameWorkingDay) required}
+    }
+    
+ relationship OneToMany {
+	LevelFormation{program} to Program{levelFormation(level)},
+    LevelFormation{trimester} to Trimester{levelFormation(level) required}
+    }
+
+ relationship OneToMany {
+	Program{competition} to Competition{program(nameProgram) required},
+    Program{course} to Course{program(nameProgram) required},
+    Program{proyect} to Proyect{program(nameProgram) required}
+    }
+    
+ relationship OneToMany {
+	Competition{learningResult} to LearningResult{competition(codeCompetition) required},
+    Competition{availabilityCompetition} to AvailabilityCompetition{competition(codeCompetition) required},
+    }
+    
+ relationship OneToMany {
+	LearningResult{trimesterPlanning} to TrimesterPlanning {learningResult(codeResult) required},
+    LearningResult{limitationEnviroment} to LimitationEnvironment{learningResult(codeResult) required},
+    LearningResult{resultSeen} to ResultSeen{learningResult(codeResult) required}
+    }
+    
+ relationship OneToMany {
+	Course{courseHasTrimester} to CourseHasTrimester {course(courseNumber) required}
+ } 
+ 
+ relationship OneToMany {
+	Trimester{courseHasTrimester} to CourseHasTrimester {trimester(nameTrimester) required},
+    Trimester{trimesterPlanning} to TrimesterPlanning {trimester(nameTrimester) required}
+ }
+ relationship OneToMany {
+	CourseHasTrimester{schedule} to Schedule {courseHasTrimester required},
+    CourseHasTrimester{resultSeen} to ResultSeen {courseHasTrimester required}
+ }
+ 
+ relationship OneToMany {
+	Planning{trimesterPlanning} to TrimesterPlanning {planning(code) required}
+ }
+ 
+ relationship OneToMany {
+	TrimesterPlanning{planningActivity} to PlanningActivity {trimesterPlanning required}
+ }
+ 
+ relationship OneToMany {
+	TypeEnvironment{ambient} to Ambient {typeEnvironment(type) required}
+ }
+ 
+ relationship OneToMany {
+	Sede{ambient} to Ambient {Sede(nameSede) required}
+ }
+ 
+ relationship OneToMany {
+	Ambient{limitationEnvironment} to LimitationEnvironment {ambient(numberRoom) required},
+    Ambient{schedule} to Schedule {ambient(numberRoom) required}
+ }
+ 
+ relationship OneToMany {
+	Year{instructorLinking} to InstructorLinking {year(numberYear) required},
+    Year{currentQuarter} to CurrentQuarter {year(numberYear) required}
+ }
+ 
+ relationship OneToMany {
+	Area{instructorArea} to InstructorArea {area(nameArea) required}
+ }
+ 
+ relationship OneToMany {
+	Instructor{instructorArea} to InstructorArea {instructor required},
+    Instructor{instructorLinking} to InstructorLinking {instructor required},
+    Instructor{schedule} to Schedule {instructor required}
+ }
+ 
+ relationship OneToMany {
+	Linkage{instructorLinking} to InstructorLinking {linkage(typeLink) required}
+ }
+ 
+ relationship OneToMany {
+	InstructorLinking{scheduleAvailability} to ScheduleAvailability {instructorLinking required},
+    InstructorLinking{availabilityCompetition} to AvailabilityCompetition {instructorLinking required}
+ }
+ 
+ relationship OneToMany {
+	JourneyInstructor{timeStudy} to TimeStudy {journeyInstructor(nameDay) required},
+    JourneyInstructor{scheduleAvailability} to ScheduleAvailability {journeyInstructor(nameDay) required}
+ }
+ 
+ relationship OneToMany {
+	Day{schedule} to Schedule {day(nameDay) required},
+    Day{timeStudy} to TimeStudy {day(nameDay) required}
+ }
+ 
+ relationship OneToMany {
+	CurrentQuarter{scheduleVersion} to ScheduleVersion {currentQuarter(scheduledQuarter) required}
+ }
+ 
+ relationship OneToMany {
+	ScheduleVersion{schedule} to Schedule {scheduleVersion(numberVersion) required}
+ }
+ 
+ relationship OneToMany {
+	Modality{schedule} to Schedule {modality(nameModality) required}
+ }
+ 
+ relationship OneToMany {
+	Proyect{phase} to Phase {proyect(codeProyect) required}
+ }
+
+relationship OneToMany {
+	Phase{proyectActivity} to ProyectActivity {phase(namePhase) required}
+ }
+
+relationship OneToMany {
+	ProyectActivity{planningActivity} to PlanningActivity {proyectActivity(numberProyectActivity) required}
+ }
+
+dto * with mapstruct
+service * with serviceClass
+paginate * with pagination
+//search * with elasticsearch
+
+ 
+ 
+

@@ -1,0 +1,46 @@
+{
+    "name": "TrimesterPlanning",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "planningActivity",
+            "otherEntityRelationshipName": "trimesterPlanning",
+            "relationshipName": "planningActivity"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "learningResult",
+            "otherEntityRelationshipName": "trimesterPlanning",
+            "relationshipValidateRules": "required",
+            "relationshipName": "learningResult",
+            "otherEntityField": "codeResult"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "trimester",
+            "otherEntityRelationshipName": "trimesterPlanning",
+            "relationshipValidateRules": "required",
+            "relationshipName": "trimester",
+            "otherEntityField": "nameTrimester"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "planning",
+            "otherEntityRelationshipName": "trimesterPlanning",
+            "relationshipValidateRules": "required",
+            "relationshipName": "planning",
+            "otherEntityField": "code"
+        }
+    ],
+    "changelogDate": "20191126021423",
+    "entityTableName": "trimester_planning",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

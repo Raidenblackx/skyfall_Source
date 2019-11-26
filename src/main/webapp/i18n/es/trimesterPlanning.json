@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "trimesterPlanning": {
+      "home": {
+        "title": "Trimester Plannings",
+        "createLabel": "Crear nuevo Trimester Planning",
+        "createOrEditLabel": "Crear o editar Trimester Planning",
+        "notFound": "Ningún Trimester Plannings encontrado"
+      },
+      "created": "Un nuevo Trimester Planning ha sido creado con el identificador {{ param }}",
+      "updated": "Un Trimester Planning ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Trimester Planning ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Trimester Planning {{ id }}?"
+      },
+      "detail": {
+        "title": "Trimester Planning"
+      },
+      "planningActivity": "Planning Activity",
+      "learningResult": "Learning Result",
+      "trimester": "Trimester",
+      "planning": "Planning"
+    }
+  }
+}

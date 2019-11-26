@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="courseState">
+            <h2><span jhiTranslate="skyfallApp.courseState.detail.title">Course State</span> {{courseState.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.courseState.nameCourseState">Name Course State</span></dt>
+                <dd>
+                    <span>{{courseState.nameCourseState}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.courseState.stateCourseState">State Course State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + courseState.stateCourseState}}">{{courseState.stateCourseState}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/course-state', courseState.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

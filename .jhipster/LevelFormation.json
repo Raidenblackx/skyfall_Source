@@ -1,0 +1,46 @@
+{
+    "name": "LevelFormation",
+    "fields": [
+        {
+            "fieldName": "level",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "stateLevelFormation",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "program",
+            "otherEntityRelationshipName": "levelFormation",
+            "relationshipName": "program"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "trimester",
+            "otherEntityRelationshipName": "levelFormation",
+            "relationshipName": "trimester"
+        }
+    ],
+    "changelogDate": "20191126021413",
+    "entityTableName": "level_formation",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="availabilityCompetition">
+            <h2><span jhiTranslate="skyfallApp.availabilityCompetition.detail.title">Availability Competition</span> {{availabilityCompetition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.availabilityCompetition.competition">Competition</span></dt>
+                <dd>
+                    <div *ngIf="availabilityCompetition.competitionId">
+                        <a [routerLink]="['/competition', availabilityCompetition.competitionId, 'view']">{{availabilityCompetition.competitionCodeCompetition}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.availabilityCompetition.instructorLinking">Instructor Linking</span></dt>
+                <dd>
+                    <div *ngIf="availabilityCompetition.instructorLinkingId">
+                        <a [routerLink]="['/instructor-linking', availabilityCompetition.instructorLinkingId, 'view']">{{availabilityCompetition.instructorLinkingId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/availability-competition', availabilityCompetition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

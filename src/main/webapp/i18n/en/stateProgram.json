@@ -1,0 +1,9 @@
+{
+  "skyfallApp": {
+    "StateProgram": {
+      "null": "",
+      "EJECUCION": "EJECUCION",
+      "SUSPENDIDO": "SUSPENDIDO"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+    "name": "Proyect",
+    "fields": [
+        {
+            "fieldName": "codeProyect",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "nameProyect",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "stateProyect",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "phase",
+            "otherEntityRelationshipName": "proyect",
+            "relationshipName": "phase"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "program",
+            "otherEntityRelationshipName": "proyect",
+            "relationshipValidateRules": "required",
+            "relationshipName": "program",
+            "otherEntityField": "nameProgram"
+        }
+    ],
+    "changelogDate": "20191126021442",
+    "entityTableName": "proyect",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,46 @@
+{
+    "name": "Day",
+    "fields": [
+        {
+            "fieldName": "nameDay",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "stateDay",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "schedule",
+            "otherEntityRelationshipName": "day",
+            "relationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "timeStudy",
+            "otherEntityRelationshipName": "day",
+            "relationshipName": "timeStudy"
+        }
+    ],
+    "changelogDate": "20191126021437",
+    "entityTableName": "day",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="area">
+            <h2><span jhiTranslate="skyfallApp.area.detail.title">Area</span> {{area.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.area.nameArea">Name Area</span></dt>
+                <dd>
+                    <span>{{area.nameArea}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.area.urlLogo">Url Logo</span></dt>
+                <dd>
+                    <div *ngIf="area.urlLogo">
+                        <a (click)="openFile(area.urlLogoContentType, area.urlLogo)">
+                            <img [src]="'data:' + area.urlLogoContentType + ';base64,' + area.urlLogo" style="max-width: 100%;" alt="area image"/>
+                        </a>
+                        {{area.urlLogoContentType}}, {{byteSize(area.urlLogo)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.area.stateArea">State Area</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + area.stateArea}}">{{area.stateArea}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/area', area.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

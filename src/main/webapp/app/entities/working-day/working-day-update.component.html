@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-working-day-heading" jhiTranslate="skyfallApp.workingDay.home.createOrEditLabel">Create or edit a Working Day</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.workingDay.initialWorkingDay" for="field_initialWorkingDay">Initial Working Day</label>
+                    <input type="text" class="form-control" name="initialWorkingDay" id="field_initialWorkingDay"
+                           formControlName="initialWorkingDay"/>
+                    <div *ngIf="editForm.get('initialWorkingDay').invalid && (editForm.get('initialWorkingDay').dirty || editForm.get('initialWorkingDay').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('initialWorkingDay').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('initialWorkingDay').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.workingDay.nameWorkingDay" for="field_nameWorkingDay">Name Working Day</label>
+                    <input type="text" class="form-control" name="nameWorkingDay" id="field_nameWorkingDay"
+                           formControlName="nameWorkingDay"/>
+                    <div *ngIf="editForm.get('nameWorkingDay').invalid && (editForm.get('nameWorkingDay').dirty || editForm.get('nameWorkingDay').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameWorkingDay').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameWorkingDay').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.workingDay.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                    <div *ngIf="editForm.get('description').invalid && (editForm.get('description').dirty || editForm.get('description').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.workingDay.imagenUrl" for="field_imagenUrl">Imagen Url</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imagenUrlContentType').value + ';base64,' + editForm.get('imagenUrl').value" style="max-height: 100px;" *ngIf="editForm.get('imagenUrl').value" alt="workingDay image"/>
+                        <div *ngIf="editForm.get('imagenUrl').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('imagenUrlContentType').value}}, {{byteSize(editForm.get('imagenUrl').value)}}</span>
+                            <button type="button" (click)="clearInputImage('imagenUrl', 'imagenUrlContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imagenUrl" (change)="setFileData($event, 'imagenUrl', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imagenUrl" id="field_imagenUrl"
+                           formControlName="imagenUrl"/>
+                    <input type="hidden" class="form-control" name="imagenUrlContentType" id="field_imagenUrlContentType"
+                           formControlName="imagenUrlContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.workingDay.stateWorkingDay" for="field_stateWorkingDay">State Working Day</label>
+                    <select class="form-control" name="stateWorkingDay" formControlName="stateWorkingDay" id="field_stateWorkingDay">
+                        <option value="ACTIVO">{{'skyfallApp.State.ACTIVO' | translate}}</option>
+                        <option value="INACTIVO">{{'skyfallApp.State.INACTIVO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('stateWorkingDay').invalid && (editForm.get('stateWorkingDay').dirty || editForm.get('stateWorkingDay').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stateWorkingDay').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

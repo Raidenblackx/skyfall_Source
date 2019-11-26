@@ -1,0 +1,32 @@
+{
+    "name": "PlanningActivity",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "trimesterPlanning",
+            "otherEntityRelationshipName": "planningActivity",
+            "relationshipValidateRules": "required",
+            "relationshipName": "trimesterPlanning",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "proyectActivity",
+            "otherEntityRelationshipName": "planningActivity",
+            "relationshipValidateRules": "required",
+            "relationshipName": "proyectActivity",
+            "otherEntityField": "numberProyectActivity"
+        }
+    ],
+    "changelogDate": "20191126021424",
+    "entityTableName": "planning_activity",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

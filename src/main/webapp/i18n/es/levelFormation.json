@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "levelFormation": {
+      "home": {
+        "title": "Level Formations",
+        "createLabel": "Crear nuevo Level Formation",
+        "createOrEditLabel": "Crear o editar Level Formation",
+        "notFound": "Ningún Level Formations encontrado"
+      },
+      "created": "Un nuevo Level Formation ha sido creado con el identificador {{ param }}",
+      "updated": "Un Level Formation ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Level Formation ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Level Formation {{ id }}?"
+      },
+      "detail": {
+        "title": "Level Formation"
+      },
+      "level": "Level",
+      "stateLevelFormation": "State Level Formation",
+      "program": "Program",
+      "trimester": "Trimester"
+    }
+  }
+}

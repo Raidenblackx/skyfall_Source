@@ -1,0 +1,60 @@
+{
+    "name": "CurrentQuarter",
+    "fields": [
+        {
+            "fieldName": "scheduledQuarter",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "stateCurrentQuarter",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "scheduleVersion",
+            "otherEntityRelationshipName": "currentQuarter",
+            "relationshipName": "scheduleVersion"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "year",
+            "otherEntityRelationshipName": "currentQuarter",
+            "relationshipValidateRules": "required",
+            "relationshipName": "year",
+            "otherEntityField": "numberYear"
+        }
+    ],
+    "changelogDate": "20191126021439",
+    "entityTableName": "current_quarter",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

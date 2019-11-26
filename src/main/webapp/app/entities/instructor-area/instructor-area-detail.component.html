@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="instructorArea">
+            <h2><span jhiTranslate="skyfallApp.instructorArea.detail.title">Instructor Area</span> {{instructorArea.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.instructorArea.stateInstructorArea">State Instructor Area</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + instructorArea.stateInstructorArea}}">{{instructorArea.stateInstructorArea}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.instructorArea.area">Area</span></dt>
+                <dd>
+                    <div *ngIf="instructorArea.areaId">
+                        <a [routerLink]="['/area', instructorArea.areaId, 'view']">{{instructorArea.areaNameArea}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.instructorArea.instructor">Instructor</span></dt>
+                <dd>
+                    <div *ngIf="instructorArea.instructorId">
+                        <a [routerLink]="['/instructor', instructorArea.instructorId, 'view']">{{instructorArea.instructorId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/instructor-area', instructorArea.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+    "name": "AvailabilityCompetition",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "availabilityCompetition",
+            "relationshipValidateRules": "required",
+            "relationshipName": "competition",
+            "otherEntityField": "codeCompetition"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instructorLinking",
+            "otherEntityRelationshipName": "availabilityCompetition",
+            "relationshipValidateRules": "required",
+            "relationshipName": "instructorLinking",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191126021416",
+    "entityTableName": "availability_competition",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

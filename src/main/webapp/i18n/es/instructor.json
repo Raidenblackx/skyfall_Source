@@ -1,0 +1,26 @@
+{
+  "skyfallApp": {
+    "instructor": {
+      "home": {
+        "title": "Instructors",
+        "createLabel": "Crear nuevo Instructor",
+        "createOrEditLabel": "Crear o editar Instructor",
+        "notFound": "Ningún Instructors encontrado"
+      },
+      "created": "Un nuevo Instructor ha sido creado con el identificador {{ param }}",
+      "updated": "Un Instructor ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Instructor ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Instructor {{ id }}?"
+      },
+      "detail": {
+        "title": "Instructor"
+      },
+      "stateInstructor": "State Instructor",
+      "instructorArea": "Instructor Area",
+      "instructorLinking": "Instructor Linking",
+      "schedule": "Schedule",
+      "client": "Client"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "day": {
+      "home": {
+        "title": "Days",
+        "createLabel": "Crear nuevo Day",
+        "createOrEditLabel": "Crear o editar Day",
+        "notFound": "Ningún Days encontrado"
+      },
+      "created": "Un nuevo Day ha sido creado con el identificador {{ param }}",
+      "updated": "Un Day ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Day ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Day {{ id }}?"
+      },
+      "detail": {
+        "title": "Day"
+      },
+      "nameDay": "Name Day",
+      "stateDay": "State Day",
+      "schedule": "Schedule",
+      "timeStudy": "Time Study"
+    }
+  }
+}

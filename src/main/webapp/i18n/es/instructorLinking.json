@@ -1,0 +1,28 @@
+{
+  "skyfallApp": {
+    "instructorLinking": {
+      "home": {
+        "title": "Instructor Linkings",
+        "createLabel": "Crear nuevo Instructor Linking",
+        "createOrEditLabel": "Crear o editar Instructor Linking",
+        "notFound": "Ningún Instructor Linkings encontrado"
+      },
+      "created": "Un nuevo Instructor Linking ha sido creado con el identificador {{ param }}",
+      "updated": "Un Instructor Linking ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Instructor Linking ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Instructor Linking {{ id }}?"
+      },
+      "detail": {
+        "title": "Instructor Linking"
+      },
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "scheduleAvailability": "Schedule Availability",
+      "availabilityCompetition": "Availability Competition",
+      "year": "Year",
+      "instructor": "Instructor",
+      "linkage": "Linkage"
+    }
+  }
+}

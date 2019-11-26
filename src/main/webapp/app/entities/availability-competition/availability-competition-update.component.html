@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-availability-competition-heading" jhiTranslate="skyfallApp.availabilityCompetition.home.createOrEditLabel">Create or edit a Availability Competition</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.availabilityCompetition.competition" for="field_competition">Competition</label>
+                    <select class="form-control" id="field_competition" name="competition" formControlName="competitionId">
+                        <option *ngIf="!editForm.get('competitionId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="competitionOption.id" *ngFor="let competitionOption of competitions; trackBy: trackCompetitionById">{{competitionOption.codeCompetition}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('competitionId').invalid && (editForm.get('competitionId').dirty || editForm.get('competitionId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('competitionId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.availabilityCompetition.instructorLinking" for="field_instructorLinking">Instructor Linking</label>
+                    <select class="form-control" id="field_instructorLinking" name="instructorLinking" formControlName="instructorLinkingId">
+                        <option *ngIf="!editForm.get('instructorLinkingId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="instructorLinkingOption.id" *ngFor="let instructorLinkingOption of instructorlinkings; trackBy: trackInstructorLinkingById">{{instructorLinkingOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('instructorLinkingId').invalid && (editForm.get('instructorLinkingId').dirty || editForm.get('instructorLinkingId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('instructorLinkingId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

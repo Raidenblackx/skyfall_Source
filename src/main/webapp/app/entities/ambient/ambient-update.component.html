@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ambient-heading" jhiTranslate="skyfallApp.ambient.home.createOrEditLabel">Create or edit a Ambient</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.ambient.numberRoom" for="field_numberRoom">Number Room</label>
+                    <input type="text" class="form-control" name="numberRoom" id="field_numberRoom"
+                           formControlName="numberRoom"/>
+                    <div *ngIf="editForm.get('numberRoom').invalid && (editForm.get('numberRoom').dirty || editForm.get('numberRoom').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberRoom').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberRoom').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.ambient.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                    <div *ngIf="editForm.get('description').invalid && (editForm.get('description').dirty || editForm.get('description').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 1000 }">
+                        This field cannot be longer than 1000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.ambient.limitation" for="field_limitation">Limitation</label>
+                    <select class="form-control" name="limitation" formControlName="limitation" id="field_limitation">
+                        <option value="SIN_LIMITACION">{{'skyfallApp.Limitation.SIN_LIMITACION' | translate}}</option>
+                        <option value="CON_LIMITACION">{{'skyfallApp.Limitation.CON_LIMITACION' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('limitation').invalid && (editForm.get('limitation').dirty || editForm.get('limitation').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('limitation').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.ambient.stateAmbient" for="field_stateAmbient">State Ambient</label>
+                    <select class="form-control" name="stateAmbient" formControlName="stateAmbient" id="field_stateAmbient">
+                        <option value="ACTIVO">{{'skyfallApp.State.ACTIVO' | translate}}</option>
+                        <option value="INACTIVO">{{'skyfallApp.State.INACTIVO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('stateAmbient').invalid && (editForm.get('stateAmbient').dirty || editForm.get('stateAmbient').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stateAmbient').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.ambient.typeEnvironment" for="field_typeEnvironment">Type Environment</label>
+                    <select class="form-control" id="field_typeEnvironment" name="typeEnvironment" formControlName="typeEnvironmentId">
+                        <option *ngIf="!editForm.get('typeEnvironmentId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="typeEnvironmentOption.id" *ngFor="let typeEnvironmentOption of typeenvironments; trackBy: trackTypeEnvironmentById">{{typeEnvironmentOption.type}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('typeEnvironmentId').invalid && (editForm.get('typeEnvironmentId').dirty || editForm.get('typeEnvironmentId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('typeEnvironmentId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.ambient.sede" for="field_sede">Sede</label>
+                    <select class="form-control" id="field_sede" name="sede" formControlName="sedeId">
+                        <option *ngIf="!editForm.get('sedeId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="sedeOption.id" *ngFor="let sedeOption of sedes; trackBy: trackSedeById">{{sedeOption.nameSede}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('sedeId').invalid && (editForm.get('sedeId').dirty || editForm.get('sedeId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('sedeId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

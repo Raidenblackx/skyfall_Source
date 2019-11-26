@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="schedule">
+            <h2><span jhiTranslate="skyfallApp.schedule.detail.title">Schedule</span> {{schedule.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.schedule.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{schedule.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.schedule.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{schedule.endTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.schedule.courseHasTrimester">Course Has Trimester</span></dt>
+                <dd>
+                    <div *ngIf="schedule.courseHasTrimesterId">
+                        <a [routerLink]="['/course-has-trimester', schedule.courseHasTrimesterId, 'view']">{{schedule.courseHasTrimesterId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.schedule.ambient">Ambient</span></dt>
+                <dd>
+                    <div *ngIf="schedule.ambientId">
+                        <a [routerLink]="['/ambient', schedule.ambientId, 'view']">{{schedule.ambientNumberRoom}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.schedule.instructor">Instructor</span></dt>
+                <dd>
+                    <div *ngIf="schedule.instructorId">
+                        <a [routerLink]="['/instructor', schedule.instructorId, 'view']">{{schedule.instructorId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.schedule.day">Day</span></dt>
+                <dd>
+                    <div *ngIf="schedule.dayId">
+                        <a [routerLink]="['/day', schedule.dayId, 'view']">{{schedule.dayNameDay}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.schedule.scheduleVersion">Schedule Version</span></dt>
+                <dd>
+                    <div *ngIf="schedule.scheduleVersionId">
+                        <a [routerLink]="['/schedule-version', schedule.scheduleVersionId, 'view']">{{schedule.scheduleVersionNumberVersion}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.schedule.modality">Modality</span></dt>
+                <dd>
+                    <div *ngIf="schedule.modalityId">
+                        <a [routerLink]="['/modality', schedule.modalityId, 'view']">{{schedule.modalityNameModality}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule', schedule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

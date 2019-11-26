@@ -1,0 +1,32 @@
+{
+    "name": "LimitationEnvironment",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "learningResult",
+            "otherEntityRelationshipName": "limitationEnviroment",
+            "relationshipValidateRules": "required",
+            "relationshipName": "learningResult",
+            "otherEntityField": "codeResult"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ambient",
+            "otherEntityRelationshipName": "limitationEnvironment",
+            "relationshipValidateRules": "required",
+            "relationshipName": "ambient",
+            "otherEntityField": "numberRoom"
+        }
+    ],
+    "changelogDate": "20191126021428",
+    "entityTableName": "limitation_environment",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

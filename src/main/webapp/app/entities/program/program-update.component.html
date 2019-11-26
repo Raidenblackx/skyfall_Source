@@ -1,0 +1,104 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-program-heading" jhiTranslate="skyfallApp.program.home.createOrEditLabel">Create or edit a Program</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.program.codeProgram" for="field_codeProgram">Code Program</label>
+                    <input type="text" class="form-control" name="codeProgram" id="field_codeProgram"
+                           formControlName="codeProgram"/>
+                    <div *ngIf="editForm.get('codeProgram').invalid && (editForm.get('codeProgram').dirty || editForm.get('codeProgram').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codeProgram').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codeProgram').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.program.version" for="field_version">Version</label>
+                    <input type="text" class="form-control" name="version" id="field_version"
+                           formControlName="version"/>
+                    <div *ngIf="editForm.get('version').invalid && (editForm.get('version').dirty || editForm.get('version').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('version').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('version').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.program.nameProgram" for="field_nameProgram">Name Program</label>
+                    <input type="text" class="form-control" name="nameProgram" id="field_nameProgram"
+                           formControlName="nameProgram"/>
+                    <div *ngIf="editForm.get('nameProgram').invalid && (editForm.get('nameProgram').dirty || editForm.get('nameProgram').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameProgram').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameProgram').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 500 }">
+                        This field cannot be longer than 500 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.program.initial" for="field_initial">Initial</label>
+                    <input type="text" class="form-control" name="initial" id="field_initial"
+                           formControlName="initial"/>
+                    <div *ngIf="editForm.get('initial').invalid && (editForm.get('initial').dirty || editForm.get('initial').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('initial').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('initial').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.program.stateProgram" for="field_stateProgram">State Program</label>
+                    <select class="form-control" name="stateProgram" formControlName="stateProgram" id="field_stateProgram">
+                        <option value="EJECUCION">{{'skyfallApp.StateProgram.EJECUCION' | translate}}</option>
+                        <option value="SUSPENDIDO">{{'skyfallApp.StateProgram.SUSPENDIDO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('stateProgram').invalid && (editForm.get('stateProgram').dirty || editForm.get('stateProgram').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stateProgram').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.program.levelFormation" for="field_levelFormation">Level Formation</label>
+                    <select class="form-control" id="field_levelFormation" name="levelFormation" formControlName="levelFormationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="levelFormationOption.id" *ngFor="let levelFormationOption of levelformations; trackBy: trackLevelFormationById">{{levelFormationOption.level}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

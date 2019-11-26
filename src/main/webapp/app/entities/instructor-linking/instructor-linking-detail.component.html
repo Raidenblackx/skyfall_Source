@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="instructorLinking">
+            <h2><span jhiTranslate="skyfallApp.instructorLinking.detail.title">Instructor Linking</span> {{instructorLinking.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.instructorLinking.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{instructorLinking.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.instructorLinking.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{instructorLinking.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.instructorLinking.year">Year</span></dt>
+                <dd>
+                    <div *ngIf="instructorLinking.yearId">
+                        <a [routerLink]="['/year', instructorLinking.yearId, 'view']">{{instructorLinking.yearNumberYear}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.instructorLinking.instructor">Instructor</span></dt>
+                <dd>
+                    <div *ngIf="instructorLinking.instructorId">
+                        <a [routerLink]="['/instructor', instructorLinking.instructorId, 'view']">{{instructorLinking.instructorId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.instructorLinking.linkage">Linkage</span></dt>
+                <dd>
+                    <div *ngIf="instructorLinking.linkageId">
+                        <a [routerLink]="['/linkage', instructorLinking.linkageId, 'view']">{{instructorLinking.linkageTypeLink}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/instructor-linking', instructorLinking.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

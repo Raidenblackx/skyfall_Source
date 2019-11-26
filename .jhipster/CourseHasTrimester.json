@@ -1,0 +1,44 @@
+{
+    "name": "CourseHasTrimester",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "schedule",
+            "otherEntityRelationshipName": "courseHasTrimester",
+            "relationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "resultSeen",
+            "otherEntityRelationshipName": "courseHasTrimester",
+            "relationshipName": "resultSeen"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "courseHasTrimester",
+            "relationshipValidateRules": "required",
+            "relationshipName": "course",
+            "otherEntityField": "courseNumber"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "trimester",
+            "otherEntityRelationshipName": "courseHasTrimester",
+            "relationshipValidateRules": "required",
+            "relationshipName": "trimester",
+            "otherEntityField": "nameTrimester"
+        }
+    ],
+    "changelogDate": "20191126021421",
+    "entityTableName": "course_has_trimester",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

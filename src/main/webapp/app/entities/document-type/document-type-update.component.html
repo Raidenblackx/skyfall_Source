@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-document-type-heading" jhiTranslate="skyfallApp.documentType.home.createOrEditLabel">Create or edit a Document Type</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.documentType.initial" for="field_initial">Initial</label>
+                    <input type="text" class="form-control" name="initial" id="field_initial"
+                           formControlName="initial"/>
+                    <div *ngIf="editForm.get('initial').invalid && (editForm.get('initial').dirty || editForm.get('initial').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('initial').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('initial').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.documentType.documentName" for="field_documentName">Document Name</label>
+                    <input type="text" class="form-control" name="documentName" id="field_documentName"
+                           formControlName="documentName"/>
+                    <div *ngIf="editForm.get('documentName').invalid && (editForm.get('documentName').dirty || editForm.get('documentName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('documentName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('documentName').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.documentType.stateDocumentType" for="field_stateDocumentType">State Document Type</label>
+                    <select class="form-control" name="stateDocumentType" formControlName="stateDocumentType" id="field_stateDocumentType">
+                        <option value="ACTIVO">{{'skyfallApp.State.ACTIVO' | translate}}</option>
+                        <option value="INACTIVO">{{'skyfallApp.State.INACTIVO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('stateDocumentType').invalid && (editForm.get('stateDocumentType').dirty || editForm.get('stateDocumentType').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stateDocumentType').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
