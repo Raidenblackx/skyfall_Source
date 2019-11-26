@@ -1,0 +1,26 @@
+{
+  "skyfallApp": {
+    "proyect": {
+      "home": {
+        "title": "Proyects",
+        "createLabel": "Crear nuevo Proyect",
+        "createOrEditLabel": "Crear o editar Proyect",
+        "notFound": "Ningún Proyects encontrado"
+      },
+      "created": "Un nuevo Proyect ha sido creado con el identificador {{ param }}",
+      "updated": "Un Proyect ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Proyect ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Proyect {{ id }}?"
+      },
+      "detail": {
+        "title": "Proyect"
+      },
+      "codeProyect": "Code Proyect",
+      "nameProyect": "Name Proyect",
+      "stateProyect": "State Proyect",
+      "phase": "Phase",
+      "program": "Program"
+    }
+  }
+}

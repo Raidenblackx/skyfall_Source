@@ -1,0 +1,49 @@
+{
+    "name": "DocumentType",
+    "fields": [
+        {
+            "fieldName": "initial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "documentName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "stateDocumentType",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "client",
+            "otherEntityRelationshipName": "documentType",
+            "relationshipName": "client"
+        }
+    ],
+    "changelogDate": "20191126021409",
+    "entityTableName": "document_type",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

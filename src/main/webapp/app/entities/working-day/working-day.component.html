@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="skyfallApp.workingDay.home.title">Working Days</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-working-day" [routerLink]="['/working-day/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="skyfallApp.workingDay.home.createLabel">
+            Create a new Working Day
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="workingDays?.length === 0">
+        <span jhiTranslate="skyfallApp.workingDay.home.notFound">No workingDays found</span>
+    </div>
+    <div class="table-responsive" *ngIf="workingDays?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="initialWorkingDay"><span jhiTranslate="skyfallApp.workingDay.initialWorkingDay">Initial Working Day</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nameWorkingDay"><span jhiTranslate="skyfallApp.workingDay.nameWorkingDay">Name Working Day</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span jhiTranslate="skyfallApp.workingDay.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="imagenUrl"><span jhiTranslate="skyfallApp.workingDay.imagenUrl">Imagen Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="stateWorkingDay"><span jhiTranslate="skyfallApp.workingDay.stateWorkingDay">State Working Day</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let workingDay of workingDays ;trackBy: trackId">
+                <td><a [routerLink]="['/working-day', workingDay.id, 'view' ]">{{workingDay.id}}</a></td>
+                <td>{{workingDay.initialWorkingDay}}</td>
+                <td>{{workingDay.nameWorkingDay}}</td>
+                <td>{{workingDay.description}}</td>
+                <td>
+                    <a *ngIf="workingDay.imagenUrl" (click)="openFile(workingDay.imagenUrlContentType, workingDay.imagenUrl)">
+                        <img [src]="'data:' + workingDay.imagenUrlContentType + ';base64,' + workingDay.imagenUrl" style="max-height: 30px;" alt="workingDay image"/>
+                    </a>
+                    <span *ngIf="workingDay.imagenUrl">{{workingDay.imagenUrlContentType}}, {{byteSize(workingDay.imagenUrl)}}</span>
+                </td>
+                <td jhiTranslate="{{'skyfallApp.State.' + workingDay.stateWorkingDay}}">{{workingDay.stateWorkingDay}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/working-day', workingDay.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/working-day', workingDay.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(workingDay)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="workingDays?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

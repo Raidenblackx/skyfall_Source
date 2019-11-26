@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="planning">
+            <h2><span jhiTranslate="skyfallApp.planning.detail.title">Planning</span> {{planning.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.planning.code">Code</span></dt>
+                <dd>
+                    <span>{{planning.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.planning.date">Date</span></dt>
+                <dd>
+                    <span>{{planning.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.planning.statePlannig">State Plannig</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + planning.statePlannig}}">{{planning.statePlannig}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/planning', planning.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

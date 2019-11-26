@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="skyfallApp.currentQuarter.home.title">Current Quarters</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-current-quarter" [routerLink]="['/current-quarter/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="skyfallApp.currentQuarter.home.createLabel">
+            Create a new Current Quarter
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="currentQuarters?.length === 0">
+        <span jhiTranslate="skyfallApp.currentQuarter.home.notFound">No currentQuarters found</span>
+    </div>
+    <div class="table-responsive" *ngIf="currentQuarters?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="scheduledQuarter"><span jhiTranslate="skyfallApp.currentQuarter.scheduledQuarter">Scheduled Quarter</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="startDate"><span jhiTranslate="skyfallApp.currentQuarter.startDate">Start Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="endDate"><span jhiTranslate="skyfallApp.currentQuarter.endDate">End Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="stateCurrentQuarter"><span jhiTranslate="skyfallApp.currentQuarter.stateCurrentQuarter">State Current Quarter</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="yearNumberYear"><span jhiTranslate="skyfallApp.currentQuarter.year">Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let currentQuarter of currentQuarters ;trackBy: trackId">
+                <td><a [routerLink]="['/current-quarter', currentQuarter.id, 'view' ]">{{currentQuarter.id}}</a></td>
+                <td>{{currentQuarter.scheduledQuarter}}</td>
+                <td>{{currentQuarter.startDate | date:'medium'}}</td>
+                <td>{{currentQuarter.endDate | date:'medium'}}</td>
+                <td jhiTranslate="{{'skyfallApp.State.' + currentQuarter.stateCurrentQuarter}}">{{currentQuarter.stateCurrentQuarter}}</td>
+                <td>
+                    <div *ngIf="currentQuarter.yearId">
+                        <a [routerLink]="['/year', currentQuarter.yearId , 'view' ]" >{{currentQuarter.yearNumberYear}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/current-quarter', currentQuarter.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/current-quarter', currentQuarter.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(currentQuarter)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="currentQuarters?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

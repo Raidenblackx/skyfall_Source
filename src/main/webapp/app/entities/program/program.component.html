@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="skyfallApp.program.home.title">Programs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-program" [routerLink]="['/program/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="skyfallApp.program.home.createLabel">
+            Create a new Program
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="programs?.length === 0">
+        <span jhiTranslate="skyfallApp.program.home.notFound">No programs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="programs?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="codeProgram"><span jhiTranslate="skyfallApp.program.codeProgram">Code Program</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="version"><span jhiTranslate="skyfallApp.program.version">Version</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nameProgram"><span jhiTranslate="skyfallApp.program.nameProgram">Name Program</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="initial"><span jhiTranslate="skyfallApp.program.initial">Initial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="stateProgram"><span jhiTranslate="skyfallApp.program.stateProgram">State Program</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="levelFormationLevel"><span jhiTranslate="skyfallApp.program.levelFormation">Level Formation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let program of programs ;trackBy: trackId">
+                <td><a [routerLink]="['/program', program.id, 'view' ]">{{program.id}}</a></td>
+                <td>{{program.codeProgram}}</td>
+                <td>{{program.version}}</td>
+                <td>{{program.nameProgram}}</td>
+                <td>{{program.initial}}</td>
+                <td jhiTranslate="{{'skyfallApp.StateProgram.' + program.stateProgram}}">{{program.stateProgram}}</td>
+                <td>
+                    <div *ngIf="program.levelFormationId">
+                        <a [routerLink]="['/level-formation', program.levelFormationId , 'view' ]" >{{program.levelFormationLevel}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/program', program.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/program', program.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(program)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="programs?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

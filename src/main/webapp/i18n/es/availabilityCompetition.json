@@ -1,0 +1,23 @@
+{
+  "skyfallApp": {
+    "availabilityCompetition": {
+      "home": {
+        "title": "Availability Competitions",
+        "createLabel": "Crear nuevo Availability Competition",
+        "createOrEditLabel": "Crear o editar Availability Competition",
+        "notFound": "Ningún Availability Competitions encontrado"
+      },
+      "created": "Un nuevo Availability Competition ha sido creado con el identificador {{ param }}",
+      "updated": "Un Availability Competition ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Availability Competition ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Availability Competition {{ id }}?"
+      },
+      "detail": {
+        "title": "Availability Competition"
+      },
+      "competition": "Competition",
+      "instructorLinking": "Instructor Linking"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "skyfallApp": {
+    "instructorArea": {
+      "home": {
+        "title": "Instructor Areas",
+        "createLabel": "Crear nuevo Instructor Area",
+        "createOrEditLabel": "Crear o editar Instructor Area",
+        "notFound": "Ningún Instructor Areas encontrado"
+      },
+      "created": "Un nuevo Instructor Area ha sido creado con el identificador {{ param }}",
+      "updated": "Un Instructor Area ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Instructor Area ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Instructor Area {{ id }}?"
+      },
+      "detail": {
+        "title": "Instructor Area"
+      },
+      "stateInstructorArea": "State Instructor Area",
+      "area": "Area",
+      "instructor": "Instructor"
+    }
+  }
+}

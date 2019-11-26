@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/skyfall
-    username: skyfall
-    password:
+    url: jdbc:postgresql://database-1.c91qyq34xofy.us-east-1.rds.amazonaws.com:5432/prueba2
+    username: postgres
+    password: 123456789
     hikari:
       poolName: Hikari
       auto-commit: false

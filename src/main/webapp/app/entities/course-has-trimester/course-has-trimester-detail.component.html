@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="courseHasTrimester">
+            <h2><span jhiTranslate="skyfallApp.courseHasTrimester.detail.title">Course Has Trimester</span> {{courseHasTrimester.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.courseHasTrimester.course">Course</span></dt>
+                <dd>
+                    <div *ngIf="courseHasTrimester.courseId">
+                        <a [routerLink]="['/course', courseHasTrimester.courseId, 'view']">{{courseHasTrimester.courseCourseNumber}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.courseHasTrimester.trimester">Trimester</span></dt>
+                <dd>
+                    <div *ngIf="courseHasTrimester.trimesterId">
+                        <a [routerLink]="['/trimester', courseHasTrimester.trimesterId, 'view']">{{courseHasTrimester.trimesterNameTrimester}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/course-has-trimester', courseHasTrimester.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

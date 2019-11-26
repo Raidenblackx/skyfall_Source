@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-trimester-heading" jhiTranslate="skyfallApp.trimester.home.createOrEditLabel">Create or edit a Trimester</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.trimester.nameTrimester" for="field_nameTrimester">Name Trimester</label>
+                    <input type="number" class="form-control" name="nameTrimester" id="field_nameTrimester"
+                           formControlName="nameTrimester"/>
+                    <div *ngIf="editForm.get('nameTrimester').invalid && (editForm.get('nameTrimester').dirty || editForm.get('nameTrimester').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameTrimester').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('nameTrimester')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.trimester.stateTrimester" for="field_stateTrimester">State Trimester</label>
+                    <select class="form-control" name="stateTrimester" formControlName="stateTrimester" id="field_stateTrimester">
+                        <option value="ACTIVO">{{'skyfallApp.State.ACTIVO' | translate}}</option>
+                        <option value="INACTIVO">{{'skyfallApp.State.INACTIVO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('stateTrimester').invalid && (editForm.get('stateTrimester').dirty || editForm.get('stateTrimester').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stateTrimester').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.trimester.workingDay" for="field_workingDay">Working Day</label>
+                    <select class="form-control" id="field_workingDay" name="workingDay" formControlName="workingDayId">
+                        <option *ngIf="!editForm.get('workingDayId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="workingDayOption.id" *ngFor="let workingDayOption of workingdays; trackBy: trackWorkingDayById">{{workingDayOption.nameWorkingDay}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('workingDayId').invalid && (editForm.get('workingDayId').dirty || editForm.get('workingDayId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('workingDayId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.trimester.levelFormation" for="field_levelFormation">Level Formation</label>
+                    <select class="form-control" id="field_levelFormation" name="levelFormation" formControlName="levelFormationId">
+                        <option *ngIf="!editForm.get('levelFormationId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="levelFormationOption.id" *ngFor="let levelFormationOption of levelformations; trackBy: trackLevelFormationById">{{levelFormationOption.level}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('levelFormationId').invalid && (editForm.get('levelFormationId').dirty || editForm.get('levelFormationId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('levelFormationId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

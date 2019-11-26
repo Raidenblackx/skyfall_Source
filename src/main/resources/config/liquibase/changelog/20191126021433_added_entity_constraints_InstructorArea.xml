@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity InstructorArea.
+    -->
+    <changeSet id="20191126021433-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="area_id"
+                                 baseTableName="instructor_area"
+                                 constraintName="fk_instructor_area_area_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="area"/>
+
+        <addForeignKeyConstraint baseColumnNames="instructor_id"
+                                 baseTableName="instructor_area"
+                                 constraintName="fk_instructor_area_instructor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="instructor"/>
+
+    </changeSet>
+</databaseChangeLog>

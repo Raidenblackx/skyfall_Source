@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="skyfallApp.planningActivity.home.title">Planning Activities</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-planning-activity" [routerLink]="['/planning-activity/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="skyfallApp.planningActivity.home.createLabel">
+            Create a new Planning Activity
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="planningActivities?.length === 0">
+        <span jhiTranslate="skyfallApp.planningActivity.home.notFound">No planningActivities found</span>
+    </div>
+    <div class="table-responsive" *ngIf="planningActivities?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="trimesterPlanningId"><span jhiTranslate="skyfallApp.planningActivity.trimesterPlanning">Trimester Planning</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="proyectActivityNumberProyectActivity"><span jhiTranslate="skyfallApp.planningActivity.proyectActivity">Proyect Activity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let planningActivity of planningActivities ;trackBy: trackId">
+                <td><a [routerLink]="['/planning-activity', planningActivity.id, 'view' ]">{{planningActivity.id}}</a></td>
+                <td>
+                    <div *ngIf="planningActivity.trimesterPlanningId">
+                        <a [routerLink]="['/trimester-planning', planningActivity.trimesterPlanningId , 'view' ]" >{{planningActivity.trimesterPlanningId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planningActivity.proyectActivityId">
+                        <a [routerLink]="['/proyect-activity', planningActivity.proyectActivityId , 'view' ]" >{{planningActivity.proyectActivityNumberProyectActivity}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/planning-activity', planningActivity.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/planning-activity', planningActivity.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(planningActivity)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="planningActivities?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

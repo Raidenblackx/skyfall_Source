@@ -1,0 +1,28 @@
+{
+  "skyfallApp": {
+    "workingDay": {
+      "home": {
+        "title": "Working Days",
+        "createLabel": "Crear nuevo Working Day",
+        "createOrEditLabel": "Crear o editar Working Day",
+        "notFound": "Ningún Working Days encontrado"
+      },
+      "created": "Un nuevo Working Day ha sido creado con el identificador {{ param }}",
+      "updated": "Un Working Day ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Working Day ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Working Day {{ id }}?"
+      },
+      "detail": {
+        "title": "Working Day"
+      },
+      "initialWorkingDay": "Initial Working Day",
+      "nameWorkingDay": "Name Working Day",
+      "description": "Description",
+      "imagenUrl": "Imagen Url",
+      "stateWorkingDay": "State Working Day",
+      "course": "Course",
+      "trimester": "Trimester"
+    }
+  }
+}

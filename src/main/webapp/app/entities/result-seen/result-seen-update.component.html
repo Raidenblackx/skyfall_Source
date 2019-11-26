@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-result-seen-heading" jhiTranslate="skyfallApp.resultSeen.home.createOrEditLabel">Create or edit a Result Seen</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.resultSeen.learningResult" for="field_learningResult">Learning Result</label>
+                    <select class="form-control" id="field_learningResult" name="learningResult" formControlName="learningResultId">
+                        <option *ngIf="!editForm.get('learningResultId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="learningResultOption.id" *ngFor="let learningResultOption of learningresults; trackBy: trackLearningResultById">{{learningResultOption.codeResult}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('learningResultId').invalid && (editForm.get('learningResultId').dirty || editForm.get('learningResultId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('learningResultId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.resultSeen.courseHasTrimester" for="field_courseHasTrimester">Course Has Trimester</label>
+                    <select class="form-control" id="field_courseHasTrimester" name="courseHasTrimester" formControlName="courseHasTrimesterId">
+                        <option *ngIf="!editForm.get('courseHasTrimesterId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="courseHasTrimesterOption.id" *ngFor="let courseHasTrimesterOption of coursehastrimesters; trackBy: trackCourseHasTrimesterById">{{courseHasTrimesterOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('courseHasTrimesterId').invalid && (editForm.get('courseHasTrimesterId').dirty || editForm.get('courseHasTrimesterId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('courseHasTrimesterId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

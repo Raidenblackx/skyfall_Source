@@ -1,0 +1,55 @@
+{
+    "name": "Competition",
+    "fields": [
+        {
+            "fieldName": "codeCompetition",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "denomination",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1000
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "learningResult",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "learningResult"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "availabilityCompetition",
+            "otherEntityRelationshipName": "competition",
+            "relationshipName": "availabilityCompetition"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "program",
+            "otherEntityRelationshipName": "competition",
+            "relationshipValidateRules": "required",
+            "relationshipName": "program",
+            "otherEntityField": "nameProgram"
+        }
+    ],
+    "changelogDate": "20191126021415",
+    "entityTableName": "competition",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

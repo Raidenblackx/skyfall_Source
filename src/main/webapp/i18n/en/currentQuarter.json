@@ -1,0 +1,27 @@
+{
+  "skyfallApp": {
+    "currentQuarter": {
+      "home": {
+        "title": "Current Quarters",
+        "createLabel": "Create a new Current Quarter",
+        "createOrEditLabel": "Create or edit a Current Quarter",
+        "notFound": "No Current Quarters found"
+      },
+      "created": "A new Current Quarter is created with identifier {{ param }}",
+      "updated": "A Current Quarter is updated with identifier {{ param }}",
+      "deleted": "A Current Quarter is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Current Quarter {{ id }}?"
+      },
+      "detail": {
+        "title": "Current Quarter"
+      },
+      "scheduledQuarter": "Scheduled Quarter",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "stateCurrentQuarter": "State Current Quarter",
+      "scheduleVersion": "Schedule Version",
+      "year": "Year"
+    }
+  }
+}

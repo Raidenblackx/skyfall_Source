@@ -1,0 +1,44 @@
+{
+    "name": "Year",
+    "fields": [
+        {
+            "fieldName": "numberYear",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "stateYear",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "instructorLinking",
+            "otherEntityRelationshipName": "year",
+            "relationshipName": "instructorLinking"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "currentQuarter",
+            "otherEntityRelationshipName": "year",
+            "relationshipName": "currentQuarter"
+        }
+    ],
+    "changelogDate": "20191126021429",
+    "entityTableName": "year",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

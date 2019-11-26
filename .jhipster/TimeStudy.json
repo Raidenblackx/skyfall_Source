@@ -1,0 +1,47 @@
+{
+    "name": "TimeStudy",
+    "fields": [
+        {
+            "fieldName": "startTime",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "journeyInstructor",
+            "otherEntityRelationshipName": "timeStudy",
+            "relationshipValidateRules": "required",
+            "relationshipName": "journeyInstructor",
+            "otherEntityField": "nameDay"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "day",
+            "otherEntityRelationshipName": "timeStudy",
+            "relationshipValidateRules": "required",
+            "relationshipName": "day",
+            "otherEntityField": "nameDay"
+        }
+    ],
+    "changelogDate": "20191126021438",
+    "entityTableName": "time_study",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

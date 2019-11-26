@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="program">
+            <h2><span jhiTranslate="skyfallApp.program.detail.title">Program</span> {{program.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.program.codeProgram">Code Program</span></dt>
+                <dd>
+                    <span>{{program.codeProgram}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.program.version">Version</span></dt>
+                <dd>
+                    <span>{{program.version}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.program.nameProgram">Name Program</span></dt>
+                <dd>
+                    <span>{{program.nameProgram}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.program.initial">Initial</span></dt>
+                <dd>
+                    <span>{{program.initial}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.program.stateProgram">State Program</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.StateProgram.' + program.stateProgram}}">{{program.stateProgram}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.program.levelFormation">Level Formation</span></dt>
+                <dd>
+                    <div *ngIf="program.levelFormationId">
+                        <a [routerLink]="['/level-formation', program.levelFormationId, 'view']">{{program.levelFormationLevel}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/program', program.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

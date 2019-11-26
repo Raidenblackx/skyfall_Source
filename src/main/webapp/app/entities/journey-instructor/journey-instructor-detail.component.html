@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="journeyInstructor">
+            <h2><span jhiTranslate="skyfallApp.journeyInstructor.detail.title">Journey Instructor</span> {{journeyInstructor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.journeyInstructor.nameDay">Name Day</span></dt>
+                <dd>
+                    <span>{{journeyInstructor.nameDay}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.journeyInstructor.description">Description</span></dt>
+                <dd>
+                    <span>{{journeyInstructor.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.journeyInstructor.stateJourneyInstructor">State Journey Instructor</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + journeyInstructor.stateJourneyInstructor}}">{{journeyInstructor.stateJourneyInstructor}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/journey-instructor', journeyInstructor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

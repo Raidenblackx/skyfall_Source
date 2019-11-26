@@ -1,0 +1,61 @@
+{
+    "name": "LearningResult",
+    "fields": [
+        {
+            "fieldName": "codeResult",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "denomination",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1000
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "trimesterPlanning",
+            "otherEntityRelationshipName": "learningResult",
+            "relationshipName": "trimesterPlanning"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "limitationEnvironment",
+            "otherEntityRelationshipName": "learningResult",
+            "relationshipName": "limitationEnviroment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "resultSeen",
+            "otherEntityRelationshipName": "learningResult",
+            "relationshipName": "resultSeen"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "learningResult",
+            "relationshipValidateRules": "required",
+            "relationshipName": "competition",
+            "otherEntityField": "codeCompetition"
+        }
+    ],
+    "changelogDate": "20191126021417",
+    "entityTableName": "learning_result",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

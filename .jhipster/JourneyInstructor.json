@@ -1,0 +1,55 @@
+{
+    "name": "JourneyInstructor",
+    "fields": [
+        {
+            "fieldName": "nameDay",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "stateJourneyInstructor",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "timeStudy",
+            "otherEntityRelationshipName": "journeyInstructor",
+            "relationshipName": "timeStudy"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "scheduleAvailability",
+            "otherEntityRelationshipName": "journeyInstructor",
+            "relationshipName": "scheduleAvailability"
+        }
+    ],
+    "changelogDate": "20191126021435",
+    "entityTableName": "journey_instructor",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

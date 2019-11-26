@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "courseHasTrimester": {
+      "home": {
+        "title": "Course Has Trimesters",
+        "createLabel": "Create a new Course Has Trimester",
+        "createOrEditLabel": "Create or edit a Course Has Trimester",
+        "notFound": "No Course Has Trimesters found"
+      },
+      "created": "A new Course Has Trimester is created with identifier {{ param }}",
+      "updated": "A Course Has Trimester is updated with identifier {{ param }}",
+      "deleted": "A Course Has Trimester is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Course Has Trimester {{ id }}?"
+      },
+      "detail": {
+        "title": "Course Has Trimester"
+      },
+      "schedule": "Schedule",
+      "resultSeen": "Result Seen",
+      "course": "Course",
+      "trimester": "Trimester"
+    }
+  }
+}

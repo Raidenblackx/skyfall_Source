@@ -1,0 +1,51 @@
+{
+    "name": "Instructor",
+    "fields": [
+        {
+            "fieldName": "stateInstructor",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "instructorArea",
+            "otherEntityRelationshipName": "instructor",
+            "relationshipName": "instructorArea"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "instructorLinking",
+            "otherEntityRelationshipName": "instructor",
+            "relationshipName": "instructorLinking"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "schedule",
+            "otherEntityRelationshipName": "instructor",
+            "relationshipName": "schedule"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "client",
+            "otherEntityRelationshipName": "instructor",
+            "relationshipValidateRules": "required",
+            "relationshipName": "client",
+            "otherEntityField": "documentNumber"
+        }
+    ],
+    "changelogDate": "20191126021431",
+    "entityTableName": "instructor",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

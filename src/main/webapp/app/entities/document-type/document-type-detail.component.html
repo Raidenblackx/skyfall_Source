@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documentType">
+            <h2><span jhiTranslate="skyfallApp.documentType.detail.title">Document Type</span> {{documentType.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.documentType.initial">Initial</span></dt>
+                <dd>
+                    <span>{{documentType.initial}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.documentType.documentName">Document Name</span></dt>
+                <dd>
+                    <span>{{documentType.documentName}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.documentType.stateDocumentType">State Document Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + documentType.stateDocumentType}}">{{documentType.stateDocumentType}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-type', documentType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

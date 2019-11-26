@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="proyect">
+            <h2><span jhiTranslate="skyfallApp.proyect.detail.title">Proyect</span> {{proyect.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.proyect.codeProyect">Code Proyect</span></dt>
+                <dd>
+                    <span>{{proyect.codeProyect}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.proyect.nameProyect">Name Proyect</span></dt>
+                <dd>
+                    <span>{{proyect.nameProyect}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.proyect.stateProyect">State Proyect</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + proyect.stateProyect}}">{{proyect.stateProyect}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.proyect.program">Program</span></dt>
+                <dd>
+                    <div *ngIf="proyect.programId">
+                        <a [routerLink]="['/program', proyect.programId, 'view']">{{proyect.programNameProgram}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/proyect', proyect.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

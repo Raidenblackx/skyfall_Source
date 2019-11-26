@@ -1,0 +1,67 @@
+{
+    "name": "InstructorLinking",
+    "fields": [
+        {
+            "fieldName": "startDate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "scheduleAvailability",
+            "otherEntityRelationshipName": "instructorLinking",
+            "relationshipName": "scheduleAvailability"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "availabilityCompetition",
+            "otherEntityRelationshipName": "instructorLinking",
+            "relationshipName": "availabilityCompetition"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "year",
+            "otherEntityRelationshipName": "instructorLinking",
+            "relationshipValidateRules": "required",
+            "relationshipName": "year",
+            "otherEntityField": "numberYear"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instructor",
+            "otherEntityRelationshipName": "instructorLinking",
+            "relationshipValidateRules": "required",
+            "relationshipName": "instructor",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "linkage",
+            "otherEntityRelationshipName": "instructorLinking",
+            "relationshipValidateRules": "required",
+            "relationshipName": "linkage",
+            "otherEntityField": "typeLink"
+        }
+    ],
+    "changelogDate": "20191126021434",
+    "entityTableName": "instructor_linking",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

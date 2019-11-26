@@ -1,0 +1,26 @@
+{
+  "skyfallApp": {
+    "proyectActivity": {
+      "home": {
+        "title": "Proyect Activities",
+        "createLabel": "Create a new Proyect Activity",
+        "createOrEditLabel": "Create or edit a Proyect Activity",
+        "notFound": "No Proyect Activities found"
+      },
+      "created": "A new Proyect Activity is created with identifier {{ param }}",
+      "updated": "A Proyect Activity is updated with identifier {{ param }}",
+      "deleted": "A Proyect Activity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Proyect Activity {{ id }}?"
+      },
+      "detail": {
+        "title": "Proyect Activity"
+      },
+      "numberProyectActivity": "Number Proyect Activity",
+      "descriptionActivity": "Description Activity",
+      "stateProyectActivity": "State Proyect Activity",
+      "planningActivity": "Planning Activity",
+      "phase": "Phase"
+    }
+  }
+}

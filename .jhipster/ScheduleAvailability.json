@@ -1,0 +1,32 @@
+{
+    "name": "ScheduleAvailability",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instructorLinking",
+            "otherEntityRelationshipName": "scheduleAvailability",
+            "relationshipValidateRules": "required",
+            "relationshipName": "instructorLinking",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "journeyInstructor",
+            "otherEntityRelationshipName": "scheduleAvailability",
+            "relationshipValidateRules": "required",
+            "relationshipName": "journeyInstructor",
+            "otherEntityField": "nameDay"
+        }
+    ],
+    "changelogDate": "20191126021436",
+    "entityTableName": "schedule_availability",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,23 @@
+{
+  "skyfallApp": {
+    "scheduleAvailability": {
+      "home": {
+        "title": "Schedule Availabilities",
+        "createLabel": "Create a new Schedule Availability",
+        "createOrEditLabel": "Create or edit a Schedule Availability",
+        "notFound": "No Schedule Availabilities found"
+      },
+      "created": "A new Schedule Availability is created with identifier {{ param }}",
+      "updated": "A Schedule Availability is updated with identifier {{ param }}",
+      "deleted": "A Schedule Availability is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Schedule Availability {{ id }}?"
+      },
+      "detail": {
+        "title": "Schedule Availability"
+      },
+      "instructorLinking": "Instructor Linking",
+      "journeyInstructor": "Journey Instructor"
+    }
+  }
+}

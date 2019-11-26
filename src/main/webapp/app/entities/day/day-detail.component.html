@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="day">
+            <h2><span jhiTranslate="skyfallApp.day.detail.title">Day</span> {{day.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.day.nameDay">Name Day</span></dt>
+                <dd>
+                    <span>{{day.nameDay}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.day.stateDay">State Day</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + day.stateDay}}">{{day.stateDay}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/day', day.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

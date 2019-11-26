@@ -1,0 +1,27 @@
+{
+  "skyfallApp": {
+    "learningResult": {
+      "home": {
+        "title": "Learning Results",
+        "createLabel": "Create a new Learning Result",
+        "createOrEditLabel": "Create or edit a Learning Result",
+        "notFound": "No Learning Results found"
+      },
+      "created": "A new Learning Result is created with identifier {{ param }}",
+      "updated": "A Learning Result is updated with identifier {{ param }}",
+      "deleted": "A Learning Result is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Learning Result {{ id }}?"
+      },
+      "detail": {
+        "title": "Learning Result"
+      },
+      "codeResult": "Code Result",
+      "denomination": "Denomination",
+      "trimesterPlanning": "Trimester Planning",
+      "limitationEnviroment": "Limitation Enviroment",
+      "resultSeen": "Result Seen",
+      "competition": "Competition"
+    }
+  }
+}

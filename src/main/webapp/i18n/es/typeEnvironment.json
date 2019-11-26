@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "typeEnvironment": {
+      "home": {
+        "title": "Type Environments",
+        "createLabel": "Crear nuevo Type Environment",
+        "createOrEditLabel": "Crear o editar Type Environment",
+        "notFound": "Ningún Type Environments encontrado"
+      },
+      "created": "Un nuevo Type Environment ha sido creado con el identificador {{ param }}",
+      "updated": "Un Type Environment ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Type Environment ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Type Environment {{ id }}?"
+      },
+      "detail": {
+        "title": "Type Environment"
+      },
+      "type": "Type",
+      "description": "Description",
+      "stateTypeEnvironment": "State Type Environment",
+      "ambient": "Ambient"
+    }
+  }
+}

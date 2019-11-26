@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Ambient.
+    -->
+    <changeSet id="20191126021427-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="type_environment_id"
+                                 baseTableName="ambient"
+                                 constraintName="fk_ambient_type_environment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_environment"/>
+
+        <addForeignKeyConstraint baseColumnNames="sede_id"
+                                 baseTableName="ambient"
+                                 constraintName="fk_ambient_sede_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sede"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,41 @@
+{
+    "name": "InstructorArea",
+    "fields": [
+        {
+            "fieldName": "stateInstructorArea",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "area",
+            "otherEntityRelationshipName": "instructorArea",
+            "relationshipValidateRules": "required",
+            "relationshipName": "area",
+            "otherEntityField": "nameArea"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instructor",
+            "otherEntityRelationshipName": "instructorArea",
+            "relationshipValidateRules": "required",
+            "relationshipName": "instructor",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191126021433",
+    "entityTableName": "instructor_area",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

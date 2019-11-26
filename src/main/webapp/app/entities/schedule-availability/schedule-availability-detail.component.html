@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="scheduleAvailability">
+            <h2><span jhiTranslate="skyfallApp.scheduleAvailability.detail.title">Schedule Availability</span> {{scheduleAvailability.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.scheduleAvailability.instructorLinking">Instructor Linking</span></dt>
+                <dd>
+                    <div *ngIf="scheduleAvailability.instructorLinkingId">
+                        <a [routerLink]="['/instructor-linking', scheduleAvailability.instructorLinkingId, 'view']">{{scheduleAvailability.instructorLinkingId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.scheduleAvailability.journeyInstructor">Journey Instructor</span></dt>
+                <dd>
+                    <div *ngIf="scheduleAvailability.journeyInstructorId">
+                        <a [routerLink]="['/journey-instructor', scheduleAvailability.journeyInstructorId, 'view']">{{scheduleAvailability.journeyInstructorNameDay}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule-availability', scheduleAvailability.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

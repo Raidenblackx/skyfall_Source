@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sede">
+            <h2><span jhiTranslate="skyfallApp.sede.detail.title">Sede</span> {{sede.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.sede.nameSede">Name Sede</span></dt>
+                <dd>
+                    <span>{{sede.nameSede}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.sede.description">Description</span></dt>
+                <dd>
+                    <span>{{sede.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.sede.stateSede">State Sede</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + sede.stateSede}}">{{sede.stateSede}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sede', sede.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

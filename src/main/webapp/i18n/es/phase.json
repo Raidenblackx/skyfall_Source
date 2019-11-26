@@ -1,0 +1,25 @@
+{
+  "skyfallApp": {
+    "phase": {
+      "home": {
+        "title": "Phases",
+        "createLabel": "Crear nuevo Phase",
+        "createOrEditLabel": "Crear o editar Phase",
+        "notFound": "Ningún Phases encontrado"
+      },
+      "created": "Un nuevo Phase ha sido creado con el identificador {{ param }}",
+      "updated": "Un Phase ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Phase ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Phase {{ id }}?"
+      },
+      "detail": {
+        "title": "Phase"
+      },
+      "namePhase": "Name Phase",
+      "statePhase": "State Phase",
+      "proyectActivity": "Proyect Activity",
+      "proyect": "Proyect"
+    }
+  }
+}

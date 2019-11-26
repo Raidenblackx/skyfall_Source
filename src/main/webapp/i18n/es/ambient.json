@@ -1,0 +1,29 @@
+{
+  "skyfallApp": {
+    "ambient": {
+      "home": {
+        "title": "Ambients",
+        "createLabel": "Crear nuevo Ambient",
+        "createOrEditLabel": "Crear o editar Ambient",
+        "notFound": "Ningún Ambients encontrado"
+      },
+      "created": "Un nuevo Ambient ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ambient ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ambient ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ambient {{ id }}?"
+      },
+      "detail": {
+        "title": "Ambient"
+      },
+      "numberRoom": "Number Room",
+      "description": "Description",
+      "limitation": "Limitation",
+      "stateAmbient": "State Ambient",
+      "limitationEnvironment": "Limitation Environment",
+      "schedule": "Schedule",
+      "typeEnvironment": "Type Environment",
+      "sede": "Sede"
+    }
+  }
+}

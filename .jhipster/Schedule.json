@@ -1,0 +1,79 @@
+{
+    "name": "Schedule",
+    "fields": [
+        {
+            "fieldName": "startTime",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "courseHasTrimester",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipValidateRules": "required",
+            "relationshipName": "courseHasTrimester",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ambient",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipValidateRules": "required",
+            "relationshipName": "ambient",
+            "otherEntityField": "numberRoom"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "instructor",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipValidateRules": "required",
+            "relationshipName": "instructor",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "day",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipValidateRules": "required",
+            "relationshipName": "day",
+            "otherEntityField": "nameDay"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "scheduleVersion",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipValidateRules": "required",
+            "relationshipName": "scheduleVersion",
+            "otherEntityField": "numberVersion"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "modality",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipValidateRules": "required",
+            "relationshipName": "modality",
+            "otherEntityField": "nameModality"
+        }
+    ],
+    "changelogDate": "20191126021445",
+    "entityTableName": "schedule",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="currentQuarter">
+            <h2><span jhiTranslate="skyfallApp.currentQuarter.detail.title">Current Quarter</span> {{currentQuarter.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.currentQuarter.scheduledQuarter">Scheduled Quarter</span></dt>
+                <dd>
+                    <span>{{currentQuarter.scheduledQuarter}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.currentQuarter.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{currentQuarter.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.currentQuarter.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{currentQuarter.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.currentQuarter.stateCurrentQuarter">State Current Quarter</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + currentQuarter.stateCurrentQuarter}}">{{currentQuarter.stateCurrentQuarter}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.currentQuarter.year">Year</span></dt>
+                <dd>
+                    <div *ngIf="currentQuarter.yearId">
+                        <a [routerLink]="['/year', currentQuarter.yearId, 'view']">{{currentQuarter.yearNumberYear}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/current-quarter', currentQuarter.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+{
+    "name": "Program",
+    "fields": [
+        {
+            "fieldName": "codeProgram",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "nameProgram",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "initial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 40
+        },
+        {
+            "fieldName": "stateProgram",
+            "fieldType": "StateProgram",
+            "fieldValues": "EJECUCION,SUSPENDIDO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "program",
+            "relationshipName": "competition"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "program",
+            "relationshipName": "course"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "proyect",
+            "otherEntityRelationshipName": "program",
+            "relationshipName": "proyect"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "levelFormation",
+            "otherEntityRelationshipName": "program",
+            "relationshipName": "levelFormation",
+            "otherEntityField": "level"
+        }
+    ],
+    "changelogDate": "20191126021414",
+    "entityTableName": "program",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

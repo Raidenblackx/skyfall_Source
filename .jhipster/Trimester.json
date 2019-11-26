@@ -1,0 +1,60 @@
+{
+    "name": "Trimester",
+    "fields": [
+        {
+            "fieldName": "nameTrimester",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "stateTrimester",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "courseHasTrimester",
+            "otherEntityRelationshipName": "trimester",
+            "relationshipName": "courseHasTrimester"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "trimesterPlanning",
+            "otherEntityRelationshipName": "trimester",
+            "relationshipName": "trimesterPlanning"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "workingDay",
+            "otherEntityRelationshipName": "trimester",
+            "relationshipValidateRules": "required",
+            "relationshipName": "workingDay",
+            "otherEntityField": "nameWorkingDay"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "levelFormation",
+            "otherEntityRelationshipName": "trimester",
+            "relationshipValidateRules": "required",
+            "relationshipName": "levelFormation",
+            "otherEntityField": "level"
+        }
+    ],
+    "changelogDate": "20191126021420",
+    "entityTableName": "trimester",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

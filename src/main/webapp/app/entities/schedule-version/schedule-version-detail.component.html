@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="scheduleVersion">
+            <h2><span jhiTranslate="skyfallApp.scheduleVersion.detail.title">Schedule Version</span> {{scheduleVersion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="skyfallApp.scheduleVersion.numberVersion">Number Version</span></dt>
+                <dd>
+                    <span>{{scheduleVersion.numberVersion}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.scheduleVersion.stateScheduleVersion">State Schedule Version</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'skyfallApp.State.' + scheduleVersion.stateScheduleVersion}}">{{scheduleVersion.stateScheduleVersion}}</span>
+                </dd>
+                <dt><span jhiTranslate="skyfallApp.scheduleVersion.currentQuarter">Current Quarter</span></dt>
+                <dd>
+                    <div *ngIf="scheduleVersion.currentQuarterId">
+                        <a [routerLink]="['/current-quarter', scheduleVersion.currentQuarterId, 'view']">{{scheduleVersion.currentQuarterScheduledQuarter}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/schedule-version', scheduleVersion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

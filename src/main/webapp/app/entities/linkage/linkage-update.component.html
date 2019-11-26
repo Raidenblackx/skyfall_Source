@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-linkage-heading" jhiTranslate="skyfallApp.linkage.home.createOrEditLabel">Create or edit a Linkage</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.linkage.typeLink" for="field_typeLink">Type Link</label>
+                    <input type="text" class="form-control" name="typeLink" id="field_typeLink"
+                           formControlName="typeLink"/>
+                    <div *ngIf="editForm.get('typeLink').invalid && (editForm.get('typeLink').dirty || editForm.get('typeLink').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeLink').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeLink').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }">
+                        This field cannot be longer than 40 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.linkage.hours" for="field_hours">Hours</label>
+                    <input type="number" class="form-control" name="hours" id="field_hours"
+                           formControlName="hours"/>
+                    <div *ngIf="editForm.get('hours').invalid && (editForm.get('hours').dirty || editForm.get('hours').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('hours').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('hours')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="skyfallApp.linkage.stateLink" for="field_stateLink">State Link</label>
+                    <select class="form-control" name="stateLink" formControlName="stateLink" id="field_stateLink">
+                        <option value="ACTIVO">{{'skyfallApp.State.ACTIVO' | translate}}</option>
+                        <option value="INACTIVO">{{'skyfallApp.State.INACTIVO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('stateLink').invalid && (editForm.get('stateLink').dirty || editForm.get('stateLink').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stateLink').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

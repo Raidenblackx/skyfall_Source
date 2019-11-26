@@ -1,0 +1,79 @@
+{
+    "name": "Ambient",
+    "fields": [
+        {
+            "fieldName": "numberRoom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1000
+        },
+        {
+            "fieldName": "limitation",
+            "fieldType": "Limitation",
+            "fieldValues": "SIN_LIMITACION,CON_LIMITACION",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "stateAmbient",
+            "fieldType": "State",
+            "fieldValues": "ACTIVO,INACTIVO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "limitationEnvironment",
+            "otherEntityRelationshipName": "ambient",
+            "relationshipName": "limitationEnvironment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "schedule",
+            "otherEntityRelationshipName": "ambient",
+            "relationshipName": "schedule"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "typeEnvironment",
+            "otherEntityRelationshipName": "ambient",
+            "relationshipValidateRules": "required",
+            "relationshipName": "typeEnvironment",
+            "otherEntityField": "type"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "sede",
+            "otherEntityRelationshipName": "ambient",
+            "relationshipValidateRules": "required",
+            "relationshipName": "sede",
+            "otherEntityField": "nameSede"
+        }
+    ],
+    "changelogDate": "20191126021427",
+    "entityTableName": "ambient",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

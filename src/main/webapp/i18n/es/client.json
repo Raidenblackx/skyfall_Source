@@ -1,0 +1,28 @@
+{
+  "skyfallApp": {
+    "client": {
+      "home": {
+        "title": "Clients",
+        "createLabel": "Crear nuevo Client",
+        "createOrEditLabel": "Crear o editar Client",
+        "notFound": "Ningún Clients encontrado"
+      },
+      "created": "Un nuevo Client ha sido creado con el identificador {{ param }}",
+      "updated": "Un Client ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Client ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Client {{ id }}?"
+      },
+      "detail": {
+        "title": "Client"
+      },
+      "documentNumber": "Document Number",
+      "firstName": "First Name",
+      "secondName": "Second Name",
+      "firstLastName": "First Last Name",
+      "secondLastName": "Second Last Name",
+      "instructor": "Instructor",
+      "documentType": "Document Type"
+    }
+  }
+}
